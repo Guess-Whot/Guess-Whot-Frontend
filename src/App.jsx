@@ -10,6 +10,7 @@ function App() {
 
   const sendMessage = () => {
     socket.emit('send_message', { message, room });
+    setReceived((prevState) => [...prevState, message]);
   };
 
   const joinRoom = () => {

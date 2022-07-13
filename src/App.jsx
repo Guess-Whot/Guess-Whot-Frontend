@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 
@@ -6,7 +5,7 @@ const socket = io.connect('http://localhost:7890');
 
 function App() {
   const [message, setMessage] = useState('');
-  const [received, setReceived] = useState('');
+  const [received, setReceived] = useState([]);
   const [room, setRoom] = useState('');
 
   const sendMessage = () => {
@@ -21,7 +20,8 @@ function App() {
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
-      setReceived(data.message);
+      console.log(data);
+      setReceived((prevState) => [...prevState, data.message]);
     });
   }, [socket]);
 
@@ -42,7 +42,13 @@ function App() {
       />
       <button onClick={sendMessage}> Send Message</button>
       <h1> Message:</h1>
-      {received}
+      {/* {received} */}
+
+      {received.map((data) => (
+        <div key={data.id}>
+          <li>{data}</li>
+        </div>
+      ))}
     </div>
   );
 }

@@ -10,9 +10,11 @@ export default function App() {
     <>
       <BrowserRouter>
         <Switch>
-          <PrivateRoute exact path="/">
+          {/* <PrivateRoute exact path="/"> */}
+          <Route exact path="/">
             <Landing />
-          </PrivateRoute>
+          </Route>
+          {/* </PrivateRoute> */}
           <Route exact path="/auth">
             <Auth />
           </Route>

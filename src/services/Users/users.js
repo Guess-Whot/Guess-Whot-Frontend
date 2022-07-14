@@ -8,6 +8,8 @@ export async function signUpUser({ email, password }) {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   });
+  console.log('HEFFEEFFEHHFHE', user);
+
   if (!user.ok) {
     throw new Error('You do not have an account.');
   }
@@ -25,6 +27,20 @@ export async function signInUser({ email, password }) {
 
   if (!user.ok) {
     throw new Error('Invalid email or password');
+  }
+  return user;
+}
+
+export async function getUser() {
+  const user = await fetch(url + '/me', {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    mode: 'cors',
+  });
+
+  if (!user.ok) {
+    throw new Error('You simply must log in to continue!');
   }
   return user;
 }

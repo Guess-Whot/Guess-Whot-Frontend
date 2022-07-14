@@ -4,20 +4,21 @@ import { useAuthContext } from '../context/AuthContext';
 import { signInUser, signUpUser } from '../services/Users/users';
 
 export default function Auth() {
-  const { setUser, email, setEmail, password, setPassword, error, setError } =
-    useAuthContext();
-  const [signIn, setSignIn] = useState(true);
+  const { setUser, email, setEmail, password, setPassword } = useAuthContext();
+  const [signIn, setSignIn] = useState(false);
   const history = useHistory();
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
   // const [name, setName] = useState('');
-  // const [error, setError] = useState('');
+  const [error, setError] = useState('');
 
   const handleSignUp = async (e) => {
     try {
       e.preventDefault();
-      await signUpUser({ email, password });
-      history.replace('/');
+      const see = await signUpUser({ email, password });
+      console.log('see');
+      history.push('/');
+      console.log('we out hereee');
     } catch (error) {
       setError(error.message);
     }
@@ -27,48 +28,26 @@ export default function Auth() {
     try {
       e.preventDefault();
       await signInUser({ email, password });
-      history.replace('/');
+      history.push('/');
     } catch (error) {
       setEmail('');
       setPassword('');
-      setError(error.message);
+      setError(error);
     }
   };
 
   const handleClick = () => {
     setSignIn(!signIn);
   };
+  console.log(signIn);
 
   return (
     <>
       {error && <p>{error}</p>}
       {signIn ? (
         <>
-          <button onClick={handleClick}>Have an account? SignIn</button>
-          <form className="signUp-form" onSubmit={handleSignUp}>
-            <h3>Sign Up</h3>
-            <input
-              id="email"
-              type="email"
-              value={email}
-              placeholder="email"
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
-
-            <input
-              id="password"
-              type="password"
-              value={password}
-              placeholder="password"
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
-            <button type="submit">Sign Up</button>
-          </form>
-        </>
-      ) : (
-        <>
-          <button onClick={handleClick}>New User? Sign Up</button>
-          <form className="signin-form" onSubmit={handleSignIn}>
+          <button onClick={handleClick}>new user? Sign Up</button>
+          <form className="signUp-form" onSubmit={handleSignIn}>
             <h3>Sign In</h3>
             <input
               id="email"
@@ -77,6 +56,7 @@ export default function Auth() {
               placeholder="email"
               onChange={(e) => setEmail(e.target.value)}
             ></input>
+
             <input
               id="password"
               type="password"
@@ -84,7 +64,29 @@ export default function Auth() {
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
             ></input>
-            <button>Sign In</button>
+            <button type="submit">Sign in</button>
+          </form>
+        </>
+      ) : (
+        <>
+          <button onClick={handleClick}>Already User? Sign In</button>
+          <form className="signin-form" onSubmit={handleSignUp}>
+            <h3>Sign Up</h3>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              placeholder="email"
+              onChange={(e) => setEmail(e.target.value)}
+            ></input>
+            <input
+              id="password"
+              type="password"
+              value={password}
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+            ></input>
+            <button>sign up</button>
           </form>
         </>
       )}

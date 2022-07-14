@@ -1,21 +1,28 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { getUser } from '../services/Users/users';
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState('');
-  const [currentUser, setCurrentUser] = useState(user || { email: null });
+  // const [user, setUser] = useState('');
+  const [currentUser, setCurrentUser] = useState({ email: null });
+  console.log(currentUser);
+  useEffect(() => {
+    const userFetch = async () => {
+      const user = await getUser();
+      setCurrentUser(user);
+    };
+    userFetch();
+  }, []);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [type, setType] = useState(true);
   const [error, setError] = useState('');
   const [username, setusername] = useState('');
+
   return (
     <AuthContext.Provider
       value={{
-        user,
-        setUser,
         email,
         setEmail,
         password,

@@ -2,8 +2,9 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // import { PrivateRoute } from './components/PrivateRoute';
 import Landing from './views/Landing';
-import Auth from './views/Auth';
 import Lobby from './views/Lobby';
+import Auth from './views/Auth';
+import ChatRooms from './components/RoomChat/roomChat';
 export default function App() {
   return (
     <>
@@ -19,7 +20,7 @@ export default function App() {
             <Lobby />
           </Route>
           <Route exact path="/game">
-            <Lobby />
+            <ChatRooms />
           </Route>
         </Switch>
       </BrowserRouter>

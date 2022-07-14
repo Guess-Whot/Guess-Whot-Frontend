@@ -13,5 +13,11 @@ export default function Landing() {
     };
     image();
   }, []);
-  return <div>{img}</div>;
+  return (
+    <div>
+      {img.map((data) => (
+        <div key={data.id}>{data}</div>
+      ))}
+    </div>
+  );
 }

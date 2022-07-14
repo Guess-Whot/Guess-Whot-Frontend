@@ -17,7 +17,7 @@ export default function Auth() {
     try {
       e.preventDefault();
       await signUpUser({ email, password });
-      history.replace('/landing');
+      history.replace('/');
     } catch (error) {
       setError(error.message);
     }
@@ -27,7 +27,7 @@ export default function Auth() {
     try {
       e.preventDefault();
       await signInUser({ email, password });
-      history.replace('/landing');
+      history.replace('/');
     } catch (error) {
       setEmail('');
       setPassword('');
@@ -52,9 +52,7 @@ export default function Auth() {
               type="email"
               value={email}
               placeholder="email"
-              onChange={(e) => {
-                setEmail(e.target.value), setUser(e.target.value);
-              }}
+              onChange={(e) => setEmail(e.target.value)}
             ></input>
 
             <input
@@ -77,9 +75,7 @@ export default function Auth() {
               type="email"
               value={email}
               placeholder="email"
-              onChange={(e) => {
-                setEmail(e.target.value), setUser(e.target.value);
-              }}
+              onChange={(e) => setEmail(e.target.value)}
             ></input>
             <input
               id="password"

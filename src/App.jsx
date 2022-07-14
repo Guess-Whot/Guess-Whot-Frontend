@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// import { PrivateRoute } from './components/PrivateRoute';
+import { PrivateRoute } from './components/PrivateRoute';
 import Landing from './views/Landing';
 import Lobby from './views/Lobby';
 import Auth from './views/Auth';
@@ -10,9 +10,9 @@ export default function App() {
     <>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
+          <PrivateRoute exact path="/">
             <Landing />
-          </Route>
+          </PrivateRoute>
           <Route exact path="/auth">
             <Auth />
           </Route>

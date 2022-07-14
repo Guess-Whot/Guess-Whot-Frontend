@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useAuthContext } from '../context/AuthContext';
 import { signInUser, signUpUser } from '../services/Users/users';
 
 export default function Auth() {
+  const { setUser, email, setEmail, password, setPassword, error, setError } =
+    useAuthContext();
   const [signIn, setSignIn] = useState(true);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  // const [name, setName] = useState('');
   const history = useHistory();
-  const [error, setError] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [name, setName] = useState('');
+  // const [error, setError] = useState('');
 
   const handleSignUp = async (e) => {
     try {
@@ -49,15 +52,11 @@ export default function Auth() {
               type="email"
               value={email}
               placeholder="email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value), setUser(e.target.value);
+              }}
             ></input>
-            {/* <input
-              id="name"
-              type="name"
-              value={name}
-              placeholder="name"
-              onChange={(e) => setName(e.target.value)}
-            ></input> */}
+
             <input
               id="password"
               type="password"
@@ -78,7 +77,9 @@ export default function Auth() {
               type="email"
               value={email}
               placeholder="email"
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value), setUser(e.target.value);
+              }}
             ></input>
             <input
               id="password"

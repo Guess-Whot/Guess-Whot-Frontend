@@ -12,12 +12,12 @@ export default function App() {
           <Route exact path="/auth">
             <Auth />
           </Route>
-          <PrivateRoute exact path="/lobby">
+          <Route exact path="/lobby">
             <Lobby />
-          </PrivateRoute>
-          <PrivateRoute exact path="/game">
+          </Route>
+          <Route exact path="/game">
             <Lobby />
-          </PrivateRoute>
+          </Route>
         </Switch>
       </BrowserRouter>
     </>

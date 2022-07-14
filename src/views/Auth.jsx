@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { signInKeeper, signUpKeeper } from '../services/keeper';
+import { signInUser, signUpUser } from '../services/Users/users';
 
-export function Auth() {
+export default function Auth() {
   const [signIn, setSignIn] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

@@ -7,17 +7,27 @@ export default function Landing() {
 
   useEffect(() => {
     const image = async () => {
-      const resp = await fetch('http://localhost:7890/characters');
+      const resp = await fetch('http://localhost:7890/api/v1/characters');
+      console.log(resp);
+
       const data = await resp.json();
+      console.log(data);
       setImg(data);
     };
     image();
   }, []);
   return (
-    <div>
-      {img.map((data) => (
-        <div key={data.id}>{data}</div>
-      ))}
-    </div>
+    <>
+      {' '}
+      <h1>TESTETSETEST</h1>
+      <div>
+        {img.map((data) => (
+          <div key={data.id}>
+            {data.name}
+            <img style={{ width: '200px' }} src={`${data.image}`} alt="image" />
+          </div>
+        ))}
+      </div>
+    </>
   );
 }

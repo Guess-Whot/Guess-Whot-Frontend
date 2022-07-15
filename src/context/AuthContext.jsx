@@ -4,21 +4,25 @@ import { getUser } from '../services/Users/users';
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  // const [user, setUser] = useState('');
-  const [currentUser, setCurrentUser] = useState({ email: null });
-  console.log(currentUser);
-  useEffect(() => {
-    const userFetch = async () => {
-      const user = await getUser();
-      setCurrentUser(user);
-    };
-    userFetch();
-  }, []);
+  const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [type, setType] = useState(true);
   const [error, setError] = useState('');
   const [username, setusername] = useState('');
+  const [currentUser, setCurrentUser] = useState({ email: null });
+  useEffect(() => {
+    const userFetch = async () => {
+      const user = await getUser();
+      console.log('AuthContextUserTest', user);
+
+      setCurrentUser({ email: user?.email });
+
+      setLoading(false);
+    };
+    userFetch();
+  }, []);
+  console.log('authContext', loading);
 
   return (
     <AuthContext.Provider
@@ -35,11 +39,16 @@ const AuthProvider = ({ children }) => {
         setusername,
         currentUser,
         setCurrentUser,
+        loading,
       }}
     >
       {children}
     </AuthContext.Provider>
   );
+};
+const useLoadingUser = () => {
+  const { loading } = useContext(AuthContext);
+  return loading;
 };
 
 const useAuthContext = () => {
@@ -50,4 +59,4 @@ const useAuthContext = () => {
   return data;
 };
 
-export { AuthProvider, useAuthContext };
+export { AuthProvider, useAuthContext, useLoadingUser };

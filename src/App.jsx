@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
-import Lobby from './views/Lobby';
 import Home from './views/Home';
+import Lobby from './views/Lobby';
 import Game from './views/Game';
 import Auth from './views/Auth';
 import ChatRooms from './components/RoomChat/roomChat';

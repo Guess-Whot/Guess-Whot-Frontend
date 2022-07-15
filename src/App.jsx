@@ -1,21 +1,24 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
 import Lobby from './views/Lobby';
 import Home from './views/Home';
 import Game from './views/Game';
 import Auth from './views/Auth';
 import ChatRooms from './components/RoomChat/roomChat';
-import Landing from './views/Testing';
+import { useAuthContext, useLoadingUser } from './context/AuthContext';
 export default function App() {
+  const { currentUser } = useAuthContext();
+  let loading = useLoadingUser();
+  console.log('currentuserconsole', currentUser);
+  if (loading) return <div>loading...</div>;
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/">
-            {/* <Home /> */}
-            <Landing />
-          </Route>
+          <PrivateRoute exact path="/">
+            <Home />
+          </PrivateRoute>
           <Route exact path="/auth">
             <Auth />
           </Route>

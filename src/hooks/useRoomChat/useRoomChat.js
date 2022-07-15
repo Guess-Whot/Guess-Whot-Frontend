@@ -4,7 +4,8 @@ import io from 'socket.io-client';
 const socket = io.connect('http://localhost:7890');
 
 export default function useRoomChat() {
-  const [flippedRecieved, setFlippedReceived] = useState(Boolean);
+  const [flipped, setFlipped] = useState(false);
+  const [flippedRecieved, setFlippedReceived] = useState(false);
   const [message, setMessage] = useState('');
   const [received, setReceived] = useState([]);
   const [room, setRoom] = useState('');
@@ -15,6 +16,7 @@ export default function useRoomChat() {
 
   const flipHandler = () => {
     console.log(room);
+    setFlipped(!flipped);
     socket.emit('flipped_card', { flipped, room });
   };
   const joinRoom = () => {
@@ -23,13 +25,14 @@ export default function useRoomChat() {
     }
   };
   useEffect(() => {
-    socket.on('flipped_received', (data) => {});
+    socket.on('flipped_received', (data) => {
+      console.log(data);
+      setFlippedReceived(data.flipped);
+    });
   }, [socket]);
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
-      setFlipped(data.flipped);
-      console.log(data);
       setReceived((prevState) => [...prevState, data.message]);
     });
   }, [socket]);
@@ -40,6 +43,9 @@ export default function useRoomChat() {
     setRoom,
     joinRoom,
     sendMessage,
+    flipped,
+    room,
     flipHandler,
+    flippedRecieved,
   };
 }

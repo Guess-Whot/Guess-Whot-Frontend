@@ -36,7 +36,12 @@ export default function Game() {
         {error && <p>{error}</p>}
         {chars.map((char) => (
           <div key={char.id}>
-            <Character name={char.name} url={char.url} flipped={false} />
+            <Character
+              id={char.id}
+              name={char.name}
+              url={char.url}
+              flipped={false}
+            />
           </div>
         ))}
       </div>

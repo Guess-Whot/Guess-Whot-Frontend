@@ -4,12 +4,15 @@ import useRoomChat from '../hooks/useRoomChat/useRoomChat';
 
 const socket = io.connect('http://localhost:7890');
 
-export default function Character({ id, name, url, flipped }) {
-  //const [flipped, setFlipped] = useState(false);
+export default function Character({ id, name, url }) {
+  const { flipHandlerBackend } = useRoomChat();
+  const [flipped, setFlipped] = useState(false);
   //flip handler changes state for local changes, and sends an id to a socket.emit function for non-local action.
-  const { flipHandler } = useRoomChat();
-  console.log(flipped);
-
+  const flipHandler = () => {
+    setFlipped(!flipped); //local changes
+    flipHandlerBackend(id, flipped);
+  };
+  console.log(id);
   return (
     <div onClick={() => flipHandler()}>
       <h2>{name}</h2>

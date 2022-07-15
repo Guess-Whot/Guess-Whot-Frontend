@@ -6,16 +6,16 @@ const socket = io.connect('http://localhost:7890');
 export default function useRoomChat() {
   const [flippedRecieved, setFlippedReceived] = useState(Boolean);
   const [message, setMessage] = useState('');
-  const [received, setReceived] = useState([]);
-  const [room, setRoom] = useState('');
+  const [received, setReceived] = useState([]); //for messages...
+  const [room, setRoom] = useState(3);
   const sendMessage = () => {
     socket.emit('send_message', { message, room });
     setReceived((prevState) => [...prevState, message]);
   };
 
-  const flipHandler = () => {
-    console.log(room);
-    socket.emit('flipped_card', { flipped, room });
+  const flipHandlerBackend = (id, flipped) => {
+    // console.log(id, 'Pennies');
+    socket.emit('flipped_card', { id, flipped, room });
   };
   const joinRoom = () => {
     if (room !== '') {
@@ -23,12 +23,15 @@ export default function useRoomChat() {
     }
   };
   useEffect(() => {
-    socket.on('flipped_received', (data) => {});
+    socket.on('flipped_received', (data) => {
+      //is going to be useful for letting opposite player know what they clicked.
+      console.log(data, 'pennies');
+    });
   }, [socket]);
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
-      setFlipped(data.flipped);
+      // setFlipped(data.flipped);
       console.log(data);
       setReceived((prevState) => [...prevState, data.message]);
     });
@@ -40,6 +43,6 @@ export default function useRoomChat() {
     setRoom,
     joinRoom,
     sendMessage,
-    flipHandler,
+    flipHandlerBackend,
   };
 }

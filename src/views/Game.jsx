@@ -19,14 +19,19 @@ export default function Game() {
       setError(e);
     }
   }, []);
-
+  console.log(chars);
   if (loading) return <p>Loading...</p>;
 
   return (
     <div>
       {error && <p>{error}</p>}
       {chars.map((char) => (
-        <Character key={char.id} {...char} />
+        <Character
+          key={char.id}
+          name={char.name}
+          url={char.url}
+          isFlipped={false}
+        />
       ))}
     </div>
   );

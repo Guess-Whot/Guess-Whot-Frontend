@@ -24,7 +24,7 @@ export default function Landing() {
         {img.map((data) => (
           <div key={data.id}>
             {data.name}
-            <img style={{ width: '200px' }} src={`${data.image}`} alt="image" />
+            <img style={{ width: '200px' }} src={`${data.url}`} alt="image" />
           </div>
         ))}
       </div>

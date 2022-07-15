@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { PrivateRoute } from './components/PrivateRoute';
-import Landing from './views/Landing';
 import Lobby from './views/Lobby';
+import Home from './views/Home';
+import Game from './views/Game';
 import Auth from './views/Auth';
 import ChatRooms from './components/RoomChat/roomChat';
 export default function App() {
@@ -11,7 +12,7 @@ export default function App() {
       <BrowserRouter>
         <Switch>
           <PrivateRoute exact path="/">
-            <Landing />
+            <Home />
           </PrivateRoute>
           <Route exact path="/auth">
             <Auth />
@@ -21,6 +22,7 @@ export default function App() {
           </Route>
           <Route exact path="/game">
             <ChatRooms />
+            <Game />
           </Route>
         </Switch>
       </BrowserRouter>

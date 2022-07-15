@@ -23,7 +23,6 @@ export default function App() {
             <Lobby />
           </Route>
           <Route exact path="/game">
-            <ChatRooms />
             <Game />
           </Route>
         </Switch>

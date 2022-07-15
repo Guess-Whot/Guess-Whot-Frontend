@@ -1,9 +1,16 @@
-export default function Character({ name, url, isFlipped }) {
+import { useState } from 'react';
+
+export default function Character({ name, url }) {
+  const [flipped, setFlipped] = useState(false);
   return (
-    <div>
+    <div
+      onClick={() => {
+        setFlipped(!flipped);
+      }}
+    >
       <h2>{name}</h2>
       <img src={url} />
-      <p>{isFlipped ? 'flipped down' : 'flipped up'}</p>
+      <p>{flipped ? 'flipped down' : 'flipped up'}</p>
     </div>
   );
 }

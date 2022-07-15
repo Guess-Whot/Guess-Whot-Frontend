@@ -6,14 +6,16 @@ import Home from './views/Home';
 import Game from './views/Game';
 import Auth from './views/Auth';
 import ChatRooms from './components/RoomChat/roomChat';
+import Landing from './views/Testing';
 export default function App() {
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <PrivateRoute exact path="/">
-            <Home />
-          </PrivateRoute>
+          <Route exact path="/">
+            {/* <Home /> */}
+            <Landing />
+          </Route>
           <Route exact path="/auth">
             <Auth />
           </Route>

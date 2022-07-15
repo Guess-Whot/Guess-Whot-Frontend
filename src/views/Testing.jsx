@@ -8,7 +8,7 @@ export default function Landing() {
   useEffect(() => {
     const image = async () => {
       const resp = await fetch('http://localhost:7890/api/v1/characters');
-      console.log(resp);
+      // console.log(resp);
 
       const data = await resp.json();
       console.log(data);

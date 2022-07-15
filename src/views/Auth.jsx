@@ -4,7 +4,14 @@ import { useAuthContext } from '../context/AuthContext';
 import { signInUser, signUpUser } from '../services/Users/users';
 
 export default function Auth() {
-  const { setUser, email, setEmail, password, setPassword } = useAuthContext();
+  const {
+    currentUser,
+    setCurrentUser,
+    email,
+    setEmail,
+    password,
+    setPassword,
+  } = useAuthContext();
   const [signIn, setSignIn] = useState(false);
   const history = useHistory();
   // const [email, setEmail] = useState('');
@@ -16,9 +23,12 @@ export default function Auth() {
     try {
       e.preventDefault();
       const see = await signUpUser({ email, password });
-      console.log('see');
-      history.push('/');
-      console.log('we out hereee');
+      // console.log('see');
+      if (see.email) {
+        setCurrentUser(see.email);
+        history.push('/');
+      }
+      // console.log('we out hereee');
     } catch (error) {
       setError(error.message);
     }

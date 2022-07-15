@@ -8,7 +8,7 @@ export async function signUpUser({ email, password }) {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   });
-  console.log('HEFFEEFFEHHFHE', user);
+  // console.log('HEFFEEFFEHHFHE', user);
 
   if (!user.ok) {
     throw new Error('You do not have an account.');
@@ -40,7 +40,8 @@ export async function getUser() {
   });
 
   if (!user.ok) {
-    throw new Error('You simply must log in to continue!');
+    return null;
   }
-  return user;
+  const result = await user.json();
+  return result;
 }

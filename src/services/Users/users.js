@@ -30,18 +30,3 @@ export async function signInUser({ email, password }) {
   }
   return user;
 }
-
-export async function getUser() {
-  const user = await fetch(url + '/me', {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
-    mode: 'cors',
-  });
-  
-  if (!user.ok) {
-    // throw new Error('You simply must log in to continue!');
-    return null;
-  }
-  return user;
-}

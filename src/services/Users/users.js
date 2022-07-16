@@ -1,4 +1,4 @@
-const url = 'http://localhost:7890/api/v1/users';
+const url = `${process.env.BACKEND_URL}/api/v1/users`;
 
 export async function signUpUser({ email, password }) {
   const user = await fetch(url, {
@@ -8,7 +8,7 @@ export async function signUpUser({ email, password }) {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   });
-  // console.log('HEFFEEFFEHHFHE', user);
+  console.log('HEFFEEFFEHHFHE', user);
 
   if (!user.ok) {
     throw new Error('You do not have an account.');
@@ -40,8 +40,8 @@ export async function getUser() {
   });
 
   if (!user.ok) {
+    // throw new Error('You simply must log in to continue!');
     return null;
   }
-  const result = await user.json();
-  return result;
+  return user;
 }

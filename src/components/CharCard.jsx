@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import useRoomChat from '../hooks/useRoomChat/useRoomChat';
 
-const socket = io.connect('http://localhost:7890');
+const socket = io.connect(`${process.env.BACKEND_URL}`);
 
 export default function Character({ id, name, url }) {
   const { flipHandlerBackend } = useRoomChat();

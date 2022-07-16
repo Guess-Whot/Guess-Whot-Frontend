@@ -4,8 +4,7 @@ import io from 'socket.io-client';
 const socket = io.connect('http://localhost:7890');
 
 export default function useRoomChat() {
-  const [flipped, setFlipped] = useState(false);
-  const [flippedRecieved, setFlippedReceived] = useState(false);
+  const [flippedReceived, setFlippedReceived] = useState(Boolean);
   const [message, setMessage] = useState('');
   const [received, setReceived] = useState([]); //for messages...
   const [room, setRoom] = useState(3);

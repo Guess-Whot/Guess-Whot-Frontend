@@ -38,7 +38,7 @@ export async function getUser() {
     credentials: 'include',
     mode: 'cors',
   });
-
+//testing
   if (!user.ok) {
     // throw new Error('You simply must log in to continue!');
     return null;

@@ -8,7 +8,6 @@ export async function signUpUser({ email, password }) {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   });
-  // console.log('HEFFEEFFEHHFHE', user);
 
   if (!user.ok) {
     throw new Error('You do not have an account.');
@@ -38,7 +37,7 @@ export async function getUser() {
     credentials: 'include',
     mode: 'cors',
   });
-  
+
   if (!user.ok) {
     return null;
   }

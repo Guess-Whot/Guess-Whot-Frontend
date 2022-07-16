@@ -1,6 +1,25 @@
-.up {
-  border: 5px solid black;
-}
-.down {
-  border: 5px solid red;
-}
+/* import styled from "styled-components";
+
+export const StyledCard = styled.div`
+  width: 12.5%;
+  height:auto
+  border: '0px solid' : '4px solid';
+  border-bottom-color: rgba(255, 255, 0, 0.1);
+  border-right-color: rgba(255, 255, 0, 1);
+  border-top-color: rgba(255, 255, 0, 1);
+  border-left-color: rgba(255, 255, 0, 0.3);
+`; */
+
+/* import styled from "styled-components"; */
+
+/* export const StyledBoard = styled.div`
+  display: flex;
+  align-items: flex-start;
+  width: 75%;
+  height: 75%;
+  border: '0px solid' : '4px solid';
+  border-bottom-color: rgba(0, 0, 255, 0.1);
+  border-right-color: rgba(0, 0, 255, 1);
+  border-top-color: rgba(0, 0, 255, 1);
+  border-left-color: rgba(0, 0, 255, 0.3);
+`; */

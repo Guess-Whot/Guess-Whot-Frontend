@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import useRoomChat from '../hooks/useRoomChat';
+import { StyledCard } from './Styles/StyledCard';
 
 const socket = io.connect('http://localhost:7890');
 
@@ -14,11 +15,10 @@ export default function Character({ id, name, url }) {
   };
   console.log(id);
   return (
-    <div onClick={() => flipHandler()}>
-      <h2>{name}</h2>
+    <StyledCard onClick={() => flipHandler()}>
+      <h3>{name}</h3>
       <img src={url} />
       {flipped ? 'up' : 'down'}
-      <p></p>
-    </div>
+    </StyledCard>
   );
 }

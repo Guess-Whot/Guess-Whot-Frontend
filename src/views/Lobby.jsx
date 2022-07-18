@@ -1,5 +1,5 @@
 import React from 'react';
-import ChatRooms from '../components/RoomChat/roomChat';
+import ChatRooms from '../components/roomChat';
 export default function Lobby() {
   return (
     <>

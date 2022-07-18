@@ -1,5 +1,5 @@
 import React from 'react';
-import useRoomChat from '../../hooks/useRoomChat/useRoomChat';
+import useRoomChat from '../hooks/useRoomChat';
 
 export default function ChatRooms() {
   const { setMessage, received, setRoom, joinRoom, sendMessage } =

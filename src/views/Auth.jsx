@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
-import { signInUser, signUpUser } from '../services/Users/users';
+import { signInUser, signUpUser } from '../services/users';
 
 export default function Auth() {
   const {

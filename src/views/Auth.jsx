@@ -23,7 +23,7 @@ export default function Auth() {
       const see = await signUpUser({ email, password });
       // if (see.email) {
       // setCurrentUser(see.email);
-      history.push('/');
+      history.go(0);
       // }
       // console.log('we out hereee');
     } catch (error) {

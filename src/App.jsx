@@ -5,7 +5,6 @@ import Home from './views/Home';
 import Lobby from './views/Lobby';
 import Game from './views/Game';
 import Auth from './views/Auth';
-import ChatRooms from './components/RoomChat/roomChat';
 import { useAuthContext, useLoadingUser } from './context/AuthContext';
 export default function App() {
   const { currentUser } = useAuthContext();

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
-import useRoomChat from '../hooks/useRoomChat/useRoomChat';
+import useRoomChat from '../hooks/useRoomChat';
 
 const socket = io.connect('http://localhost:7890');
 

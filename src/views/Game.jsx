@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Character from '../components/CharCard';
-import ChatRooms from '../components/RoomChat/roomChat';
+import ChatRooms from '../components/roomChat';
 import { fetchChar } from '../services/chars';
 import './Game.css';
 

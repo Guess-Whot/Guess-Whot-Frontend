@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
+import { useAuthContext } from '../context/AuthContext';
 
 const socket = io.connect(`${process.env.BACKEND_URL}`);
 
 export default function useRoomChat() {
+  const { currentUser } = useAuthContext();
+
   const [flippedReceived, setFlippedReceived] = useState(Boolean);
   const [message, setMessage] = useState('');
   const [received, setReceived] = useState([]); //for messages...
@@ -15,7 +18,8 @@ export default function useRoomChat() {
   }, []);
 
   const sendMessage = () => {
-    socket.emit('send_message', { message, room });
+    //send currentuser thru this payload
+    socket.emit('send_message', { message, room, currentUser });
     setReceived((prevState) => [...prevState, message]);
   };
 
@@ -26,6 +30,7 @@ export default function useRoomChat() {
   const joinRoom = () => {
     if (room !== '') {
       socket.emit('join_room', room);
+      console.log(currentUser); // works!!
     }
   };
   useEffect(() => {
@@ -38,7 +43,7 @@ export default function useRoomChat() {
   useEffect(() => {
     socket.on('receive_message', (data) => {
       // setFlipped(data.flipped);
-      // console.log(data);
+      console.log(data.currentUser);
       setReceived((prevState) => [...prevState, data.message]);
     });
   }, [socket]);

@@ -24,8 +24,8 @@ export default function ChatRooms() {
       <h1> Message:</h1>
       <h1>{currentUser}</h1>
 
-      {received.map((data) => (
-        <div key={data.id}>
+      {received.map((data, index) => (
+        <div key={index}>
           <li>{data}</li>
         </div>
       ))}

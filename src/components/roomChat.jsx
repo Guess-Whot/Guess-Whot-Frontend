@@ -29,13 +29,15 @@ export default function ChatRooms() {
 
       {received.map((data, index) => (
         <div key={index}>
-          <li>
-            {data.sender.email === currentUser.email
-              ? 'You: '
-              : data.sender.email.split('@')[0] + ': '}
-            {`  `}
-            {data.message}
-          </li>
+          <div>
+            {data.sender.email === currentUser.email ? (
+              <div className="playerOne">You: {data.message}</div>
+            ) : (
+              <div className="playerTwo">
+                {data.sender.email.split('@')[0]} : {data.message}
+              </div>
+            )}
+          </div>
         </div>
       ))}
     </div>

@@ -38,7 +38,7 @@ export async function getUser() {
     credentials: 'include',
     mode: 'cors',
   });
-
+  
   if (!user.ok) {
     return null;
   }

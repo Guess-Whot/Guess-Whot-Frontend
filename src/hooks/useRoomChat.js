@@ -20,7 +20,7 @@ export default function useRoomChat() {
   const sendMessage = () => {
     //send currentuser thru this payload
     socket.emit('send_message', { message, room, currentUser });
-    const payload = { message, currentUser };
+    const payload = { message, sender: currentUser };
     setReceived((prevState) => [...prevState, payload]);
   };
 
@@ -46,10 +46,8 @@ export default function useRoomChat() {
       // setFlipped(data.flipped);
       const receivedPayload = {
         message: data.message,
-        currentUser: data.currentUser,
+        sender: data.currentUser,
       };
-      console.log(data.currentUser);
-      console.log(data.message);
       setReceived((prevState) => [...prevState, receivedPayload]);
     });
   }, [socket]);

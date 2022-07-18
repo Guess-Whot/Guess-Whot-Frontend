@@ -1,10 +1,13 @@
 import React from 'react';
+import { useAuthContext } from '../context/AuthContext';
 import useRoomChat from '../hooks/useRoomChat';
 
 export default function ChatRooms() {
-  const { setMessage, received, setRoom, joinRoom, sendMessage, currentUser } =
+  const { setMessage, received, setRoom, joinRoom, sendMessage } =
     useRoomChat();
   // playerOne = currentUser;
+  const { currentUser } = useAuthContext();
+
   return (
     <div className="App">
       <input
@@ -22,11 +25,17 @@ export default function ChatRooms() {
       />
       <button onClick={sendMessage}> Send Message</button>
       <h1> Message:</h1>
-      <h1>{currentUser}</h1>
+      {/* <h1>{currentUser}</h1> currentUser doesn't come from roomchat*/}
 
-      {received.map((data) => (
-        <div key={data.id}>
-          <li>{data}</li>
+      {received.map((data, index) => (
+        <div key={index}>
+          <li>
+            {data.sender.email === currentUser.email
+              ? 'You: '
+              : data.sender.email.split('@')[0] + ': '}
+            {`  `}
+            {data.message}
+          </li>
         </div>
       ))}
     </div>

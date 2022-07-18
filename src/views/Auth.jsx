@@ -50,7 +50,9 @@ export default function Auth() {
 
   return (
     <>
-      {error && <p>{error}</p>}
+      {/* <div>{error && <p>{error}</p>}</div> 
+      this line throws a objects are not valid react children error */}
+
       {signIn ? (
         <>
           <button onClick={handleClick}>new user? Sign Up</button>

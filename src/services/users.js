@@ -1,4 +1,5 @@
-const url = 'http://localhost:7890/api/v1/users';
+// const url = 'http://localhost:7890/api/v1/users';
+const url = `${process.env.BACKEND_URL}/api/v1/users`;
 
 export async function signUpUser({ email, password }) {
   const user = await fetch(url, {

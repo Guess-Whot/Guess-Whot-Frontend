@@ -46,17 +46,21 @@ export async function getUser() {
   return result;
 }
 
-export async function signOutUser({ email, password }) {
+export async function signOutUser() {
+  // const resp = await client.auth.signOut();
+  // return checkError(resp);
+
   const user = await fetch(url + '/sessions', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     mode: 'cors',
-    body: JSON.stringify({ email, password }),
+    // body: JSON.stringify(),
   });
+
+  return user;
 
   // if (!user.ok) {
   //   throw new Error('Invalid email or password');
   // }
-  return user;
 }

@@ -6,20 +6,25 @@ import Lobby from './views/Lobby';
 import Game from './views/Game';
 import Auth from './views/Auth';
 import { useAuthContext, useLoadingUser } from './context/AuthContext';
+import Header from './components/Header';
 export default function App() {
-  const { currentUser } = useAuthContext();
+  const { currentUser, setCurrentUser } = useAuthContext();
   console.log(currentUser);
 
   return (
     <>
       <BrowserRouter>
+        {/* <Header currentUser={currentUser} setCurrentUser={setCurrentUser} /> */}
+
+        <Header />
         <Switch>
-          {/* <PrivateRoute exact path="/">
-            <Home />
-          </PrivateRoute> */}
           <Route exact path="/">
             {currentUser.email ? <Home /> : <Redirect to="/auth" />}
           </Route>
+
+          {/* <PrivateRoute exact path="/">
+            <Home />
+          </PrivateRoute> */}
 
           <Route exact path="/auth">
             {!currentUser.email ? <Auth /> : <Redirect to="/" />}

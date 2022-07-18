@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import io from 'socket.io-client';
 import useRoomChat from '../hooks/useRoomChat';
 
@@ -13,12 +14,11 @@ export default function Character({ id, name, url }) {
   };
   console.log(id);
   return (
-    <div onClick={flipHandler}>
+    <div onClick={() => flipHandler()}>
       <h2>{name}</h2>
-      <img src={url} alt="test" />
-      {flippedRecieved ? 'Smol Board Up' : 'Smol board down'}
-      <h1>The Great Divide</h1>
-      {flipped ? 'Main board up' : 'Main board down'}
+      <img src={url} />
+      {flipped ? 'up' : 'down'}
+      <p></p>
     </div>
   );
 }

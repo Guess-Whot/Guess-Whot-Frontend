@@ -38,10 +38,25 @@ export async function getUser() {
     credentials: 'include',
     mode: 'cors',
   });
-  
+
   if (!user.ok) {
     return null;
   }
   const result = await user.json();
   return result;
+}
+
+export async function signOutUser({ email, password }) {
+  const user = await fetch(url + '/sessions', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    mode: 'cors',
+    body: JSON.stringify({ email, password }),
+  });
+
+  // if (!user.ok) {
+  //   throw new Error('Invalid email or password');
+  // }
+  return user;
 }

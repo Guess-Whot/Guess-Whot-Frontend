@@ -35,7 +35,7 @@ export default function Auth() {
     try {
       e.preventDefault();
       await signInUser({ email, password });
-      history.push('/');
+      history.go(0);
     } catch (error) {
       setEmail('');
       setPassword('');

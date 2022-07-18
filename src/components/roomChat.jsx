@@ -2,8 +2,9 @@ import React from 'react';
 import useRoomChat from '../hooks/useRoomChat';
 
 export default function ChatRooms() {
-  const { setMessage, received, setRoom, joinRoom, sendMessage } =
+  const { setMessage, received, setRoom, joinRoom, sendMessage, currentUser } =
     useRoomChat();
+  // playerOne = currentUser;
   return (
     <div className="App">
       <input
@@ -21,6 +22,7 @@ export default function ChatRooms() {
       />
       <button onClick={sendMessage}> Send Message</button>
       <h1> Message:</h1>
+      <h1>{currentUser}</h1>
 
       {received.map((data) => (
         <div key={data.id}>

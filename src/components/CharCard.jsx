@@ -12,7 +12,7 @@ export default function Character({ id, name, url }) {
     setFlipped(!flipped); //local changes
     flipHandlerBackend(id, flipped);
   };
-  console.log(id);
+  // console.log(id);
   return (
     <div onClick={() => flipHandler()}>
       <h2>{name}</h2>

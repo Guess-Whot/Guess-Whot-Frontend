@@ -8,18 +8,21 @@ import Auth from './views/Auth';
 import { useAuthContext, useLoadingUser } from './context/AuthContext';
 export default function App() {
   const { currentUser } = useAuthContext();
-  let loading = useLoadingUser();
-  console.log('currentuserconsole', currentUser);
-  if (loading) return <div>loading...</div>;
+  console.log(currentUser);
+
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <PrivateRoute exact path="/">
+          {/* <PrivateRoute exact path="/">
             <Home />
-          </PrivateRoute>
+          </PrivateRoute> */}
+          <Route exact path="/">
+            {currentUser.email ? <Home /> : <Redirect to="/auth" />}
+          </Route>
+
           <Route exact path="/auth">
-            <Auth />
+            {!currentUser.email ? <Auth /> : <Redirect to="/" />}
           </Route>
           <Route exact path="/lobby">
             <Lobby />

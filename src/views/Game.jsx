@@ -15,7 +15,7 @@ export default function Game() {
         const data = await fetchChar();
         //data comes in as an image, and a name, we need it to leave here with flipped[id:1, name:bendy, url:image, flipped:false] THIS WAS AN IDEA... lol
         //map thru characters, ...spread each one out, adding {flipped: false}, putting them back together as an array and then setting chars to that data.
-        console.log(data);
+        // console.log(data);
         setChars(data);
         setLoading(false);
       };

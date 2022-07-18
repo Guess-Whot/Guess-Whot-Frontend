@@ -8,16 +8,18 @@ import Auth from './views/Auth';
 import { useAuthContext, useLoadingUser } from './context/AuthContext';
 export default function App() {
   const { currentUser } = useAuthContext();
-  let loading = useLoadingUser();
-  console.log('currentuserconsole', currentUser);
-  if (loading) return <div>loading...</div>;
+
   return (
     <>
       <BrowserRouter>
         <Switch>
-          <PrivateRoute exact path="/">
+          {/* <PrivateRoute exact path="/">
             <Home />
-          </PrivateRoute>
+          </PrivateRoute> */}
+          <Route exact path="/">
+            {currentUser === 'undefined' ? <Home /> : <Redirect to="/auth" />}
+          </Route>
+
           <Route exact path="/auth">
             <Auth />
           </Route>

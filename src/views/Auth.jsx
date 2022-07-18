@@ -14,20 +14,18 @@ export default function Auth() {
   } = useAuthContext();
   const [signIn, setSignIn] = useState(false);
   const history = useHistory();
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [name, setName] = useState('');
+
   const [error, setError] = useState('');
 
   const handleSignUp = async (e) => {
     try {
       e.preventDefault();
       const see = await signUpUser({ email, password });
-      // console.log('see');
-      if (see.email) {
-        setCurrentUser(see.email);
-        history.push('/');
-      }
+      console.log('see', see.email);
+      // if (see.email) {
+      setCurrentUser(see.email);
+      history.push('/');
+      // }
       // console.log('we out hereee');
     } catch (error) {
       setError(error.message);
@@ -49,7 +47,7 @@ export default function Auth() {
   const handleClick = () => {
     setSignIn(!signIn);
   };
-  console.log(signIn);
+  // console.log(signIn);
 
   return (
     <>

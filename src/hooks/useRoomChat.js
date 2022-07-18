@@ -8,6 +8,7 @@ export default function useRoomChat() {
   const [message, setMessage] = useState('');
   const [received, setReceived] = useState([]); //for messages...
   const [room, setRoom] = useState(1);
+
   useEffect(() => {
     setRoom(1);
     joinRoom();
@@ -30,14 +31,14 @@ export default function useRoomChat() {
   useEffect(() => {
     socket.on('flipped_received', (data) => {
       //is going to be useful for letting opposite player know what they clicked.
-      console.log(data, 'pennies');
+      // console.log(data, 'pennies');
     });
   }, [socket]);
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
       // setFlipped(data.flipped);
-      console.log(data);
+      // console.log(data);
       setReceived((prevState) => [...prevState, data.message]);
     });
   }, [socket]);

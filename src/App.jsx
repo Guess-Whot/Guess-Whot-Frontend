@@ -8,6 +8,7 @@ import Auth from './views/Auth';
 import { useAuthContext, useLoadingUser } from './context/AuthContext';
 export default function App() {
   const { currentUser } = useAuthContext();
+  console.log(currentUser);
 
   return (
     <>
@@ -17,11 +18,11 @@ export default function App() {
             <Home />
           </PrivateRoute> */}
           <Route exact path="/">
-            {currentUser === 'undefined' ? <Home /> : <Redirect to="/auth" />}
+            {currentUser.email ? <Home /> : <Redirect to="/auth" />}
           </Route>
 
           <Route exact path="/auth">
-            <Auth />
+            {!currentUser.email ? <Auth /> : <Redirect to="/" />}
           </Route>
           <Route exact path="/lobby">
             <Lobby />

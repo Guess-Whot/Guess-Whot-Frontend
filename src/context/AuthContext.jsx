@@ -16,7 +16,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const userFetch = async () => {
       const user = await getUser();
-      // console.log('AuthContextUserTest', user);
+      console.log('AuthContextUserTest', user);
 
       setCurrentUser({ email: user?.email });
 

@@ -21,9 +21,8 @@ export default function Auth() {
     try {
       e.preventDefault();
       const see = await signUpUser({ email, password });
-      console.log('see', see.email);
       // if (see.email) {
-      setCurrentUser(see.email);
+      // setCurrentUser(see.email);
       history.push('/');
       // }
       // console.log('we out hereee');

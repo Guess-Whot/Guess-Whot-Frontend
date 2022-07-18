@@ -8,7 +8,7 @@ export async function signUpUser({ email, password }) {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   });
-
+  console.log(user);
   if (!user.ok) {
     throw new Error('You do not have an account.');
   }

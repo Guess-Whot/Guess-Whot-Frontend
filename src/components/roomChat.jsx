@@ -22,11 +22,15 @@ export default function ChatRooms() {
       />
       <button onClick={sendMessage}> Send Message</button>
       <h1> Message:</h1>
-      <h1>{currentUser}</h1>
+      {/* <h1>{currentUser}</h1> currentUser doesn't come from roomchat*/}
 
       {received.map((data, index) => (
         <div key={index}>
-          <li>{data}</li>
+          <li>
+            {data.currentUser.email}
+            {`  `}
+            {data.message}
+          </li>
         </div>
       ))}
     </div>

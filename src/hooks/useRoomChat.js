@@ -20,7 +20,8 @@ export default function useRoomChat() {
   const sendMessage = () => {
     //send currentuser thru this payload
     socket.emit('send_message', { message, room, currentUser });
-    setReceived((prevState) => [...prevState, message]);
+    const payload = { message, currentUser };
+    setReceived((prevState) => [...prevState, payload]);
   };
 
   const flipHandlerBackend = (id, flipped) => {
@@ -43,8 +44,13 @@ export default function useRoomChat() {
   useEffect(() => {
     socket.on('receive_message', (data) => {
       // setFlipped(data.flipped);
+      const receivedPayload = {
+        message: data.message,
+        currentUser: data.currentUser,
+      };
       console.log(data.currentUser);
-      setReceived((prevState) => [...prevState, data.message]);
+      console.log(data.message);
+      setReceived((prevState) => [...prevState, receivedPayload]);
     });
   }, [socket]);
   //pushing to dev branch

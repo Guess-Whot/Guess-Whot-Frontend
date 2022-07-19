@@ -2,14 +2,18 @@ import React, { useEffect } from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import useLobby from '../hooks/useLobby';
 
-export default function PlayerList() {
-  const { playerList, joinLobby } = useLobby();
-  console.log(playerList);
-  const { currentUser } = useAuthContext();
+export default function PlayerList({ currentUser }) {
+  const { playerList, joinLobby, setUser } = useLobby();
+  // console.log(playerList);
+
+  // useEffect(() => {
+  //   setUser('bob');
+  // }, []);
 
   useEffect(() => {
-    joinLobby({ room: 'lobby' });
-  }, []);
+    setUser('bob');
+    joinLobby();
+  }, [currentUser]);
 
   return (
     <>

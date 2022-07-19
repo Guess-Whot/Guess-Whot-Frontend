@@ -17,7 +17,8 @@ export default function useRoomChat() {
     joinRoom();
   }, []);
 
-  const sendMessage = () => {
+  const sendMessage = (e) => {
+    e.preventDefault();
     //send currentuser thru this payload
     socket.emit('send_message', { message, room, currentUser });
     const payload = { message, sender: currentUser };

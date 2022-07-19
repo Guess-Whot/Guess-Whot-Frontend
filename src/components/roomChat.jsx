@@ -17,13 +17,16 @@ export default function ChatRooms() {
         }}
       />
       <button onClick={joinRoom}> Join Room</button>
-      <input
-        placeholder="Message..."
-        onChange={(event) => {
-          setMessage(event.target.value);
-        }}
-      />
-      <button onClick={sendMessage}> Send Message</button>
+      <form onSubmit={sendMessage}>
+        <input
+          placeholder="Message..."
+          onChange={(event) => {
+            setMessage(event.target.value);
+          }}
+        />
+        <button type="submit"> Send Message</button>
+      </form>
+
       <h1> Message:</h1>
       {/* <h1>{currentUser}</h1> currentUser doesn't come from roomchat*/}
 

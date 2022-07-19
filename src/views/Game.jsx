@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Character from '../components/CharCard';
 import ChatRooms from '../components/roomChat';
+import { StyledBoard } from '../components/Styles/StyledBoard';
+import { StyledChat } from '../components/Styles/StyledChat';
 import { fetchChar } from '../services/chars';
 import './Game.css';
 
@@ -28,23 +30,21 @@ export default function Game() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <>
-      <aside>
+    <div>
+      <StyledChat>
         <ChatRooms />
-      </aside>
-      <div>
-        {error && <p>{error}</p>}
+      </StyledChat>
+      <StyledBoard>
+        {/* {error && <p>{error}</p>} */}
         {chars.map((char) => (
-          <div key={char.id}>
-            <Character
+            <Character key={char.id}
               id={char.id}
               name={char.name}
               url={char.url}
               flipped={false}
             />
-          </div>
         ))}
-      </div>
-    </>
+      </StyledBoard>
+    </div>
   );
 }

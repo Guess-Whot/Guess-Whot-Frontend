@@ -34,7 +34,7 @@ export default function ChatRooms() {
               <div className="playerOne">You: {data.message}</div>
             ) : (
               <div className="playerTwo">
-                {data.sender.email.split('@')[0]} : {data.message}
+                {data.sender.email} : {data.message}
               </div>
             )}
           </div>

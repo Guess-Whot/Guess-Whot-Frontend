@@ -11,6 +11,8 @@ const AuthProvider = ({ children }) => {
   const [error, setError] = useState('');
   const [username, setusername] = useState('');
   const [currentUser, setCurrentUser] = useState({ email: null });
+  // playerOne = currentUser.email;
+
   useEffect(() => {
     const userFetch = async () => {
       const user = await getUser();
@@ -22,11 +24,12 @@ const AuthProvider = ({ children }) => {
     };
     userFetch();
   }, []);
-  console.log('authContext', loading);
+  // console.log('authContext', loading);
 
   return (
     <AuthContext.Provider
       value={{
+        currentUser,
         email,
         setEmail,
         password,

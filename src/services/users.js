@@ -1,4 +1,5 @@
-const url = 'http://localhost:7890/api/v1/users';
+// const url = 'http://localhost:7890/api/v1/users';
+const url = `${process.env.BACKEND_URL}/api/v1/users`;
 
 export async function signUpUser({ email, password }) {
   const user = await fetch(url, {
@@ -8,8 +9,7 @@ export async function signUpUser({ email, password }) {
     mode: 'cors',
     body: JSON.stringify({ email, password }),
   });
-  // console.log('HEFFEEFFEHHFHE', user);
-
+  console.log(user);
   if (!user.ok) {
     throw new Error('You do not have an account.');
   }
@@ -34,14 +34,37 @@ export async function signInUser({ email, password }) {
 export async function getUser() {
   const user = await fetch(url + '/me', {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Access-Control-Allow-Credentials': true,
+      // 'Access-Control-Allow-Origin': process.env.BACKEND_URL,
+    },
     credentials: 'include',
     mode: 'cors',
   });
-  
+
   if (!user.ok) {
     return null;
   }
   const result = await user.json();
   return result;
+}
+
+export async function signOutUser() {
+  // const resp = await client.auth.signOut();
+  // return checkError(resp);
+
+  const user = await fetch(url + '/sessions', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    mode: 'cors',
+    // body: JSON.stringify(),
+  });
+
+  return user;
+
+  // if (!user.ok) {
+  //   throw new Error('Invalid email or password');
+  // }
 }

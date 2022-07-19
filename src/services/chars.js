@@ -4,6 +4,6 @@ export async function fetchChar() {
     const resp = await data.json();
     return resp;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 }

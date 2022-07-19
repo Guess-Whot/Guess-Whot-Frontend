@@ -12,21 +12,25 @@ export default function useLobby() {
   const { currentUser } = useAuthContext();
   const history = useHistory();
 
+  // useEffect(() => {
+  //   console.log('you here');
+  //   joinLobby();
+  // }, []);
+
   const joinLobby = () => {
     console.log(currentUser, 'is joining a lobby');
-    socket.emit('join_lobby', currentUser);
-    history.push('/lobby');
+    socket.emit('join_lobby');
   };
 
   useEffect(() => {
-    socket.on('new_player', (data) => {
-      console.log(data);
-      const player = data.currentUser;
-      setPlayerList((prevState) => [...prevState, player]);
+    socket.on('new_player', () => {
+      console.log('fudge', currentUser);
     });
   }, [socket]);
+
   return {
     //FUNCTIONS
     joinLobby,
+    playerList,
   };
 }

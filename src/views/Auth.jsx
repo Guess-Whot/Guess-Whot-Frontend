@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
-import { signInUser, signUpUser } from '../services/Users/users';
+import { signInUser, signUpUser } from '../services/users';
 
 export default function Auth() {
   const {
@@ -14,20 +14,17 @@ export default function Auth() {
   } = useAuthContext();
   const [signIn, setSignIn] = useState(false);
   const history = useHistory();
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [name, setName] = useState('');
+
   const [error, setError] = useState('');
 
   const handleSignUp = async (e) => {
     try {
       e.preventDefault();
       const see = await signUpUser({ email, password });
-      // console.log('see');
-      if (see.email) {
-        setCurrentUser(see.email);
-        history.push('/');
-      }
+      // if (see.email) {
+      // setCurrentUser(see.email);
+      history.go(0);
+      // }
       // console.log('we out hereee');
     } catch (error) {
       setError(error.message);
@@ -38,7 +35,7 @@ export default function Auth() {
     try {
       e.preventDefault();
       await signInUser({ email, password });
-      history.push('/');
+      history.go(0);
     } catch (error) {
       setEmail('');
       setPassword('');
@@ -49,11 +46,13 @@ export default function Auth() {
   const handleClick = () => {
     setSignIn(!signIn);
   };
-  console.log(signIn);
+  // console.log(signIn);
 
   return (
     <>
-      {error && <p>{error}</p>}
+      {/* <div>{error && <p>{error}</p>}</div> 
+      this line throws a objects are not valid react children error */}
+
       {signIn ? (
         <>
           <button onClick={handleClick}>new user? Sign Up</button>

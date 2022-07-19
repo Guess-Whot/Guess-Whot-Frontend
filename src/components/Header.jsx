@@ -16,7 +16,7 @@ export default function Header() {
   };
   return (
     <div className="header">
-      {currentUser && (
+      {currentUser?.email && (
         <div onClick={handleLogout}>
           <button className="out">Logout</button>
         </div>

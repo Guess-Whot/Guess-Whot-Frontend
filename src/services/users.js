@@ -34,7 +34,11 @@ export async function signInUser({ email, password }) {
 export async function getUser() {
   const user = await fetch(url + '/me', {
     method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      // 'Access-Control-Allow-Credentials': true,
+      // 'Access-Control-Allow-Origin': process.env.BACKEND_URL,
+    },
     credentials: 'include',
     mode: 'cors',
   });

@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledCard = styled.div`
-  max-width: 1fr;
-  max-height: 1fr;
+  width: 1fr;
+  height: 300px;
   border-style: solid;
   border-color: black;
   border-bottom-color: rgba(255, 0, 0, 0.1);
@@ -12,7 +12,7 @@ export const StyledCard = styled.div`
   background-color: yellow;
 
   img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 50%;
   }
 `;

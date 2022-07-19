@@ -19,7 +19,7 @@ export default function Character({ id, name, url }) {
     <StyledCard onClick={() => flipHandler()}>
       <h3>{name}</h3>
       <img src={url} />
-      {flipped ? 'up' : 'down'}
+      {/* {flipped ? 'up' : 'down'} */}
     </StyledCard>
   );
 }

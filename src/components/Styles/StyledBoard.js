@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledBoard = styled.div`
     display: grid; 
@@ -10,8 +10,8 @@ export const StyledBoard = styled.div`
       ". . . . . . . ."
       ". . . . . . . ."; 
 
-  view-width: 50%;
-  view-height: 50%;
+  width: 50%;
+  height: 100%;
   border: '0px solid' : '4px solid';
   border-bottom-color: rgba(0, 0, 255, 0.1);
   border-right-color: rgba(0, 0, 255, 1);

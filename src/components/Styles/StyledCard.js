@@ -12,7 +12,14 @@ export const StyledCard = styled.div`
   background-color: yellow;
 
   img {
+    margin-top: 50px;
     width: 100%;
     height: 50%;
+  }
+
+  h3 {
+    align-content: center;
+    font-weight: 50px;
+    margin-top: 40px;
   }
 `;

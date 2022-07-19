@@ -14,12 +14,25 @@ export default function Character({ id, name, url }) {
     setFlipped(!flipped); //local changes
     flipHandlerBackend(id, flipped);
   };
+
   // console.log(id);
   return (
-    <StyledCard onClick={() => flipHandler()}>
+    <StyledCard
+      className={flipped ? 'up' : 'down'}
+      onClick={() => flipHandler()}
+    >
+      {/* <img src={url} /> */}
+      {!flipped ? (
+        <img src={url} alt={`image of ${name} `} />
+      ) : (
+        <img
+          src={
+            'https://static.wikia.nocookie.net/enfuturama/images/1/13/Planet_express.png'
+          }
+          alt="Flipped card showing planet express"
+        />
+      )}
       <h3>{name}</h3>
-      <img src={url} />
-      {/* {flipped ? 'up' : 'down'} */}
     </StyledCard>
   );
 }

@@ -12,7 +12,7 @@ export default function Home() {
     <>
       <div>
         <h1>GUESS WHOT?</h1>
-        <h3 onClick={() => joinLobby()}>Proceed to matchmaking</h3>
+        <h3 onClick={() => history.push('/lobby')}>Proceed to matchmaking</h3>
       </div>
     </>
   );

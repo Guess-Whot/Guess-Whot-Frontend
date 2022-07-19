@@ -36,8 +36,8 @@ export async function getUser() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Credentials': true,
-      'Access-Control-Allow-Origin': process.env.BACKEND_URL,
+      // 'Access-Control-Allow-Credentials': true,
+      // 'Access-Control-Allow-Origin': process.env.BACKEND_URL,
     },
     credentials: 'include',
     mode: 'cors',

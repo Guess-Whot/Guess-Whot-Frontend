@@ -1,21 +1,25 @@
 import React, { useEffect } from 'react';
 import PlayerList from '../components/PlayerList';
 import ChatRooms from '../components/roomChat';
+import { useAuthContext } from '../context/AuthContext';
 import useLobby from '../hooks/useLobby';
 
 export default function Lobby() {
   const { playerList, joinLobby } = useLobby();
+  const { currentUser } = useAuthContext();
 
   // useEffect(() => {
   //   console.log('you here 2');
   //   joinLobby();
   // }, []);
 
-  return (
+  return !currentUser.email ? (
+    <p>loading...</p>
+  ) : (
     <>
       <h1>Matchmaking!</h1>
       <h3>Click a name to start a game!</h3>
-      <PlayerList />
+      <PlayerList currentUser={currentUser} />
       {/* <p>BrianStorming: clicking lobby could add currentUser.email to an array that gets displayed in matchmaking. Names are are clickable. Click a name, remove name from array (prevents other users from clicking on it, this will be important to prevent multiple ppl clicking on the same name/trying to enter same room), 
 
         socket.emit ('enter_lobby', {username: currentUser.email, room: lobby})

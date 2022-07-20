@@ -8,29 +8,34 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 export default function useLobby() {
-  const [playerList, setPlayerList] = useState([]);
-  const { currentUser } = useAuthContext();
-  const history = useHistory();
+  const [roomName, setRoomName] = useState('');
+  const [roomList, setRoomList] = useState([]);
 
-  // useEffect(() => {
-  //   console.log('you here');
-  //   joinLobby();
-  // }, []);
-
-  const joinLobby = () => {
-    console.log(currentUser, 'is joining a lobby');
-    socket.emit('join_lobby');
+  const createRoom = () => {
+    socket.emit('create_room', roomName, (response) => {
+      console.log({ response });
+    });
   };
 
-  useEffect(() => {
-    socket.on('new_player', () => {
-      console.log('fudge', currentUser);
+  const getRoomNames = () => {
+    socket.emit('get_roomnames', 'booger', (data) => {
+      console.log(data);
+      setRoomList(data);
     });
-  }, [socket]);
+  };
+
+  // useEffect(() => {
+  //   socket.on('receive_rooms', (data) => {
+  //     console.log('receive_rooms triggered');
+  //   });
+  //   getRoomNames();
+  //   console.log('prove the console log is triggering getRoomNames');
+  // }, [socket]);
 
   return {
-    //FUNCTIONS
-    joinLobby,
-    playerList,
+    getRoomNames,
+    setRoomName,
+    createRoom,
+    roomList,
   };
 }

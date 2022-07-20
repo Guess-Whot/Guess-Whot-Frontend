@@ -5,8 +5,9 @@ import Home from './views/Home';
 import Lobby from './views/Lobby';
 import Game from './views/Game';
 import Auth from './views/Auth';
-import { useAuthContext, useLoadingUser } from './context/AuthContext';
+import { useAuthContext } from './context/AuthContext';
 import Header from './components/Header';
+import SecretChar from './components/SecretChar';
 export default function App() {
   const { currentUser, setCurrentUser } = useAuthContext();
   console.log(currentUser);
@@ -21,7 +22,9 @@ export default function App() {
           <Route exact path="/">
             {currentUser.email ? <Home /> : <Redirect to="/auth" />}
           </Route>
-
+          <Route exact path="/test">
+            <SecretChar />
+          </Route>
           {/* <PrivateRoute exact path="/">
             <Home />
           </PrivateRoute> */}

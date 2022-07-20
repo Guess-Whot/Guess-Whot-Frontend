@@ -4,7 +4,6 @@ import ChatRooms from '../components/roomChat';
 import { StyledBoard } from '../components/Styles/StyledBoard';
 import { StyledChat } from '../components/Styles/StyledChat';
 import { fetchChar } from '../services/chars';
-import './Game.css';
 
 export default function Game() {
   const [loading, setLoading] = useState(true);

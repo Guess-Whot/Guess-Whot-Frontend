@@ -25,18 +25,19 @@ export default function Character({ id, name, url }) {
 
   return (
     <CardContainer>
-      <StyledCardInner>
+      <StyledCardInner className={flipped ? 'flipped' : ''}>
         <StyledCard onClick={() => flipHandler()}>
+          <img src={url} alt={`image of ${name} `} />
+          <h3>{name}</h3>
+        </StyledCard>
+
+        <StyledCardBack onClick={() => flipHandler()}>
           <img
-            src={
-              !flipped
-                ? url
-                : 'https://static.wikia.nocookie.net/enfuturama/images/1/13/Planet_express.png'
-            }
+            src="https://static.wikia.nocookie.net/enfuturama/images/1/13/Planet_express.png"
             alt={`image of ${name} `}
           />
           <h3>{name}</h3>
-        </StyledCard>
+        </StyledCardBack>
       </StyledCardInner>
     </CardContainer>
   );

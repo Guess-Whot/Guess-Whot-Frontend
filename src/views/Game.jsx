@@ -37,13 +37,6 @@ export default function Game() {
 
   return (
     <>
-      <button
-        onClick={() => {
-          setAtHome(!atHome);
-        }}
-      >
-        Anything
-      </button>
       <StyledGame>
         <StyledBoard>
           {/* {error && <p>{error}</p>} */}

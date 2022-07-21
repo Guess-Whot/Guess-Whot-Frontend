@@ -2,6 +2,7 @@ import e from 'cors';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
+import { useSinglePageContext } from '../context/SinglePageContext';
 import useLobby from '../hooks/useLobby';
 
 export default function Home() {
@@ -14,6 +15,8 @@ export default function Home() {
     setRoomId,
   } = useLobby();
 
+  const { setAtHome, atHome } = useSinglePageContext();
+
   const createRoomHandler = () => {
     createRoom();
   };
@@ -25,6 +28,7 @@ export default function Home() {
     // console.log(roomId);
     // setRoomId(roomId);
     await joinRoom(roomId);
+    setAtHome(!atHome);
   };
 
   return (

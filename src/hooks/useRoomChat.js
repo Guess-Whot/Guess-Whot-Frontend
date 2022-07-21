@@ -48,7 +48,7 @@ export default function useRoomChat() {
         message: data.message,
         sender: data.currentUser,
       };
-      setReceived((prevState) => [...prevState, receivedPayload]);
+      setReceived((prevState) => [receivedPayload, ...prevState]);
     });
   }, [socket]);
   //pushing to dev branch

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const StyledLobbyChat = styled.aside`
   width: 60%;
   height: 60vh;
-  overflow: scroll;
+  overflow: auto;
   border-style: solid;
   background-color: green;
 

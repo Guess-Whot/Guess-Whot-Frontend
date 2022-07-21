@@ -9,11 +9,15 @@ import { useHistory } from 'react-router-dom';
 
 export default function useLobby() {
   const [roomName, setRoomName] = useState('');
+  const [roomId, setRoomId] = useState('eee');
   const [roomList, setRoomList] = useState([]);
 
   const createRoom = () => {
-    socket.emit('create_room', roomName, (response) => {
-      console.log({ response });
+    socket.emit('create_room', roomName, (data) => {
+      console.log(
+        'Room created, USE THIS CALLBACK TO CONTINUE GAME PROCESS!!',
+        data
+      );
     });
   };
 
@@ -21,6 +25,14 @@ export default function useLobby() {
     socket.emit('get_roomnames', 'booger', (data) => {
       console.log(data);
       setRoomList(data);
+    });
+  };
+
+  const joinRoom = (roomId) => {
+    // setRoomId(newRoom);
+    console.log(roomId);
+    socket.emit('join_room', roomId, () => {
+      //send to game, as you will be the second person joining room.
     });
   };
 
@@ -37,5 +49,6 @@ export default function useLobby() {
     setRoomName,
     createRoom,
     roomList,
+    joinRoom,
   };
 }

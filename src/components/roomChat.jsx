@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import useRoomChat from '../hooks/useRoomChat';
+import { StyledHomeContainer } from './Styles/StyledHome';
 
 export default function ChatRooms() {
   const { setMessage, received, setRoom, joinRoom, sendMessage } =
@@ -9,7 +10,7 @@ export default function ChatRooms() {
   const { currentUser } = useAuthContext();
 
   return (
-    <div className="App">
+    <StyledHomeContainer className="App">
       <input
         placeholder="Room Number..."
         onChange={(event) => {
@@ -40,6 +41,6 @@ export default function ChatRooms() {
           </div>
         </div>
       ))}
-    </div>
+    </StyledHomeContainer>
   );
 }

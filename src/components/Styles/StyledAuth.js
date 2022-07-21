@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
 export const AuthContainer = styled.div`
+  transform: translate(120%, 40%);
+  top: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   height: 500px;
   width: 30%;
-  background: rgba(255, 255, 255, 0.15);
+  background: black;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
   -webkit-backdrop-filter: blur(8.5px);
@@ -17,7 +19,11 @@ export const AuthContainer = styled.div`
   letter-spacing: 0.4rem;
 `;
 export const HeaderText = styled.h1`
-  margin: 3rem 0 2rem 0;
+  margin: 1rem 0 1rem 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const StyledInput = styled.input`
@@ -26,10 +32,11 @@ export const StyledInput = styled.input`
   border-radius: 2rem;
   width: 80%;
   height: 3rem;
-  padding: 1rem;
-  border: none;
+  padding: 10px;
+  border: solid 2px;
   outline: none;
   color: #3c354e;
+  margin: 5px;
   font-size: 1rem;
   font-weight: bold;
   &:focus {

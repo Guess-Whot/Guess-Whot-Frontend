@@ -7,6 +7,7 @@ import {
   StyledButton,
   StyledButtonContain,
   StyledInput,
+  StyledInputContain,
 } from '../components/Styles/StyledAuth';
 import { useAuthContext } from '../context/AuthContext';
 import { signInUser, signUpUser } from '../services/users';
@@ -74,10 +75,8 @@ export default function Auth() {
                 placeholder="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
-            </StyledInputContain>
 
-            <StyledInputContain>
-              <Styled
+              <StyledInput
                 id="password"
                 type="password"
                 value={password}

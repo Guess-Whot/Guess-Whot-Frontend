@@ -8,9 +8,9 @@ export default function Home() {
   const { currentUser } = useAuthContext();
   // console.log(currentUser);
   const history = useHistory();
-  useEffect(() => {
-    setRoom(1);
-  }, []);
+  // useEffect(() => {
+  //   setRoom(1);
+  // }, []);
   return (
     <>
       <div>

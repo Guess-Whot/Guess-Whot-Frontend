@@ -12,7 +12,7 @@ export default function useLobby() {
   const [received, setReceived] = useState([]); //for messages...
   const [room, setRoom] = useState('');
   const [roomName, setRoomName] = useState('');
-  const [roomId, setRoomId] = useState('eee');
+
   const [roomList, setRoomList] = useState([]);
   const sendMessage = (e) => {
     e.preventDefault();
@@ -26,12 +26,12 @@ export default function useLobby() {
     // console.log(id, 'Pennies');
     socket.emit('flipped_card', { id, flipped, room });
   };
-  // const joinRoom = () => {
-  //   if (room !== '') {
-  //     socket.emit('join_room', room);
-  //     console.log(currentUser); // works!!
-  //   }
-  // };
+  const joinRoom = () => {
+    if (room !== '') {
+      socket.emit('join_room', room);
+      console.log(currentUser); // works!!
+    }
+  };
   useEffect(() => {
     socket.on('flipped_received', (data) => {
       //is going to be useful for letting opposite player know what they clicked.
@@ -49,41 +49,10 @@ export default function useLobby() {
       setReceived((prevState) => [...prevState, receivedPayload]);
     });
   }, [socket]);
-  const setReady = () => {
-    socket.emit('ready');
-  };
-
-  const createRoom = () => {
-    socket.emit('create_room', roomName, (data) => {
-      console.log(
-        'Room created, USE THIS CALLBACK TO CONTINUE GAME PROCESS!!',
-        data
-      );
-      setReady();
-    });
-  };
-
-  const getRoomNames = () => {
-    socket.emit('get_roomnames', 'booger', (data) => {
-      console.log(data);
-      setRoomList(data);
-    });
-  };
-
-  const joinRoom = (roomId) => {
-    // setRoomId(newRoom);
-    console.log(roomId);
-    socket.emit('join_room', roomId, () => {
-      //send to game, as you will be the second person joining room.
-    });
-  };
 
   return {
-    getRoomNames,
     setRoomName,
-    createRoom,
     roomList,
-    joinRoom,
     setMessage,
     received,
     setRoom,

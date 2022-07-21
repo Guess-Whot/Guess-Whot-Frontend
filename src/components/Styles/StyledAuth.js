@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 
 export const AuthContainer = styled.div`
+  background: url('./splatter.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+`;
+
+export const LoginContainer = styled.div`
   transform: translate(120%, 40%);
   top: 50%;
   display: flex;
@@ -35,7 +43,7 @@ export const StyledInput = styled.input`
   padding: 10px;
   border: solid 2px;
   outline: none;
-  color: #3c354e;
+  color: white;
   padding-left: 20px;
   margin-left: 20px;
   font-size: 1rem;

@@ -10,15 +10,14 @@ export default function useRoomChat() {
   const [flippedReceived, setFlippedReceived] = useState(Boolean);
   const [message, setMessage] = useState('');
   const [received, setReceived] = useState([]); //for messages...
-  const [room, setRoom] = useState('');
+  const [room, setRoom] = useState(1);
 
-  // useEffect(() => {
-  //   setRoom(1);
-  //   joinRoom();
-  // }, []);
+  useEffect(() => {
+    setRoom(1);
+    joinRoom();
+  }, []);
 
-  const sendMessage = (e) => {
-    e.preventDefault();
+  const sendMessage = () => {
     //send currentuser thru this payload
     socket.emit('send_message', { message, room, currentUser });
     const payload = { message, sender: currentUser };

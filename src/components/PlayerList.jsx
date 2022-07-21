@@ -4,11 +4,6 @@ import useLobby from '../hooks/useLobby';
 
 export default function PlayerList({ currentUser }) {
   const { playerList, joinLobby, setUser } = useLobby();
-  // console.log(playerList);
-
-  // useEffect(() => {
-  //   setUser('bob');
-  // }, []);
 
   useEffect(() => {
     setUser('bob');

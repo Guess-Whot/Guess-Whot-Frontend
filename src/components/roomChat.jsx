@@ -2,6 +2,7 @@ import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import useLobby from '../hooks/useLobby';
 import useRoomChat from '../hooks/useRoomChat';
+import { StyledHomeContainer } from './Styles/StyledHome';
 
 export default function ChatRooms() {
   const { setMessage, received, setRoom, joinRoom, sendMessage } =
@@ -12,7 +13,7 @@ export default function ChatRooms() {
   const { currentUser } = useAuthContext();
 
   return (
-    <div className="App">
+    <StyledHomeContainer className="App">
       <input
         placeholder="Room Number..."
         onChange={(event) => {
@@ -20,16 +21,13 @@ export default function ChatRooms() {
         }}
       />
       <button onClick={joinRoom}> Join Room</button>
-      <form onSubmit={sendMessage}>
-        <input
-          placeholder="Message..."
-          onChange={(event) => {
-            setMessage(event.target.value);
-          }}
-        />
-        <button type="submit"> Send Message</button>
-      </form>
-
+      <input
+        placeholder="Message..."
+        onChange={(event) => {
+          setMessage(event.target.value);
+        }}
+      />
+      <button onClick={sendMessage}> Send Message</button>
       <h1> Message:</h1>
       {/* <h1>{currentUser}</h1> currentUser doesn't come from roomchat*/}
 
@@ -46,6 +44,6 @@ export default function ChatRooms() {
           </div>
         </div>
       ))}
-    </div>
+    </StyledHomeContainer>
   );
 }

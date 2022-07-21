@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { StyledInput, StyledLogin } from '../components/Styles/StyledLogin';
 import { useAuthContext } from '../context/AuthContext';
 import { signInUser, signUpUser } from '../services/users';
 
@@ -50,7 +49,7 @@ export default function Auth() {
   // console.log(signIn);
 
   return (
-    <StyledLogin>
+    <>
       {/* <div>{error && <p>{error}</p>}</div> 
       this line throws a objects are not valid react children error */}
 
@@ -59,21 +58,21 @@ export default function Auth() {
           <button onClick={handleClick}>new user? Sign Up</button>
           <form className="signUp-form" onSubmit={handleSignIn}>
             <h3>Sign In</h3>
-            <StyledInput
+            <input
               id="email"
               type="email"
               value={email}
               placeholder="email"
               onChange={(e) => setEmail(e.target.value)}
-            ></StyledInput>
+            ></input>
 
-            <StyledInput
+            <input
               id="password"
               type="password"
               value={password}
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
-            ></StyledInput>
+            ></input>
             <button type="submit">Sign in</button>
           </form>
         </>
@@ -82,24 +81,24 @@ export default function Auth() {
           <button onClick={handleClick}>Already User? Sign In</button>
           <form className="signin-form" onSubmit={handleSignUp}>
             <h3>Sign Up</h3>
-            <StyledInput
+            <input
               id="email"
               type="email"
               value={email}
               placeholder="email"
               onChange={(e) => setEmail(e.target.value)}
-            ></StyledInput>
-            <StyledInput
+            ></input>
+            <input
               id="password"
               type="password"
               value={password}
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
-            ></StyledInput>
+            ></input>
             <button>sign up</button>
           </form>
         </>
       )}
-    </StyledLogin>
+    </>
   );
 }

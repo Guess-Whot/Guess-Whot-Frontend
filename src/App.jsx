@@ -20,7 +20,7 @@ export default function App() {
         <Header />
         <Switch>
           <Route exact path="/">
-            {currentUser.email ? <Lobby /> : <Redirect to="/auth" />}
+            {currentUser.email ? <Home /> : <Redirect to="/auth" />}
           </Route>
           <Route exact path="/test">
             <SecretChar />

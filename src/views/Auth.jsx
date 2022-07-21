@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { StyledInput, StyledLogin } from '../components/Styles/StyledLogin';
+import {
+  AuthContainer,
+  HeaderText,
+  StyledAlready,
+  StyledButton,
+  StyledButtonContain,
+  StyledInput,
+} from '../components/Styles/StyledAuth';
 import { useAuthContext } from '../context/AuthContext';
 import { signInUser, signUpUser } from '../services/users';
 
@@ -50,38 +57,46 @@ export default function Auth() {
   // console.log(signIn);
 
   return (
-    <StyledLogin>
+    <AuthContainer>
       {/* <div>{error && <p>{error}</p>}</div> 
       this line throws a objects are not valid react children error */}
 
       {signIn ? (
         <>
-          <button onClick={handleClick}>new user? Sign Up</button>
-          <form className="signUp-form" onSubmit={handleSignIn}>
-            <h3>Sign In</h3>
-            <StyledInput
-              id="email"
-              type="email"
-              value={email}
-              placeholder="email"
-              onChange={(e) => setEmail(e.target.value)}
-            ></StyledInput>
+          <StyledButton onClick={handleClick}>new user? Sign Up</StyledButton>
+          <form onSubmit={handleSignIn}>
+            <HeaderText>Sign In</HeaderText>
+            <StyledInputContain>
+              <StyledInput
+                id="email"
+                type="email"
+                value={email}
+                placeholder="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </StyledInputContain>
 
-            <StyledInput
-              id="password"
-              type="password"
-              value={password}
-              placeholder="password"
-              onChange={(e) => setPassword(e.target.value)}
-            ></StyledInput>
-            <button type="submit">Sign in</button>
+            <StyledInputContain>
+              <Styled
+                id="password"
+                type="password"
+                value={password}
+                placeholder="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </StyledInputContain>
+            <StyledButtonContain>
+              <StyledButton type="submit">Sign in</StyledButton>
+            </StyledButtonContain>
           </form>
         </>
       ) : (
         <>
-          <button onClick={handleClick}>Already User? Sign In</button>
+          <StyledAlready onClick={handleClick}>
+            Already User? Sign In
+          </StyledAlready>
           <form className="signin-form" onSubmit={handleSignUp}>
-            <h3>Sign Up</h3>
+            <HeaderText>Sign Up</HeaderText>
             <StyledInput
               id="email"
               type="email"
@@ -96,10 +111,12 @@ export default function Auth() {
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
             ></StyledInput>
-            <button>sign up</button>
+            <StyledButtonContain>
+              <StyledButton>sign up</StyledButton>
+            </StyledButtonContain>
           </form>
         </>
       )}
-    </StyledLogin>
+    </AuthContainer>
   );
 }

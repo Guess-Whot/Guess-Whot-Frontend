@@ -11,7 +11,7 @@ export default function useRoomChat() {
   const [message, setMessage] = useState('');
   const [received, setReceived] = useState([]); //for messages...
   const [room, setRoom] = useState('');
-
+  // const [chatroom, setChatroom] = useState('default');
   // useEffect(() => {
   //   setRoom(1);
   //   joinRoom();
@@ -20,7 +20,7 @@ export default function useRoomChat() {
   const sendMessage = (e) => {
     e.preventDefault();
     //send currentuser thru this payload
-    socket.emit('send_message', { message, room, currentUser });
+    socket.emit('send_message', { message, room: chatroom, currentUser });
     const payload = { message, sender: currentUser };
     setReceived((prevState) => [...prevState, payload]);
   };

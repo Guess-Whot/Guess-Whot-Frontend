@@ -33,7 +33,6 @@ export default function useLobby() {
   };
 
   const joinRoom = (roomId) => {
-    // setRoomId(newRoom);
     console.log(roomId);
     socket.emit('join_room', roomId, () => {
       //send to game, as you will be the second person joining room.

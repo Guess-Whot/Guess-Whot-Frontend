@@ -1,10 +1,13 @@
 import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
+import useLobby from '../hooks/useLobby';
 import useRoomChat from '../hooks/useRoomChat';
 
 export default function ChatRooms() {
   const { setMessage, received, setRoom, joinRoom, sendMessage } =
     useRoomChat();
+
+
   // playerOne = currentUser;
   const { currentUser } = useAuthContext();
 

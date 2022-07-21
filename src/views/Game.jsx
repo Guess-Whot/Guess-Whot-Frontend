@@ -8,12 +8,14 @@ import { StyledChat } from '../components/Styles/StyledChat';
 import { StyledGame } from '../components/Styles/StyledGame';
 import { StyledGameButtons } from '../components/Styles/StyledGameButtons';
 import { StyledSecretChar } from '../components/Styles/StyledSecretChar';
+import { useSinglePageContext } from '../context/SinglePageContext';
 import { fetchChar } from '../services/chars';
 
 export default function Game() {
   const [loading, setLoading] = useState(true);
   const [chars, setChars] = useState([]);
   const [error, setError] = useState(true);
+  const { setAtHome, atHome } = useSinglePageContext();
 
   useEffect(() => {
     try {
@@ -34,27 +36,37 @@ export default function Game() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <StyledGame>
-      <StyledBoard>
-        {/* {error && <p>{error}</p>} */}
-        {chars.map((char) => (
-            <Character key={char.id}
-            id={char.id}
-            name={char.name}
-            url={char.url}
-            flipped={false}
+    <>
+      <button
+        onClick={() => {
+          setAtHome(!atHome);
+        }}
+      >
+        Anything
+      </button>
+      <StyledGame>
+        <StyledBoard>
+          {/* {error && <p>{error}</p>} */}
+          {chars.map((char) => (
+            <Character
+              key={char.id}
+              id={char.id}
+              name={char.name}
+              url={char.url}
+              flipped={false}
             />
-        ))}
-      </StyledBoard>
-            <StyledChat>
-              <ChatRooms />
-            </StyledChat>
-            <StyledGameButtons>
-              <GameButtons />
-            </StyledGameButtons>
-            <StyledSecretChar>
-              <SecretChar />
-            </StyledSecretChar>
-    </StyledGame>
+          ))}
+        </StyledBoard>
+        <StyledChat>
+          <ChatRooms />
+        </StyledChat>
+        <StyledGameButtons>
+          <GameButtons />
+        </StyledGameButtons>
+        <StyledSecretChar>
+          <SecretChar />
+        </StyledSecretChar>
+      </StyledGame>
+    </>
   );
 }

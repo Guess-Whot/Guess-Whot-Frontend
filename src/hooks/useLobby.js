@@ -11,6 +11,9 @@ export default function useLobby() {
   const [roomName, setRoomName] = useState('');
   const [roomId, setRoomId] = useState('eee');
   const [roomList, setRoomList] = useState([]);
+  const setReady = () => {
+    socket.emit('ready');
+  };
 
   const createRoom = () => {
     socket.emit('create_room', roomName, (data) => {
@@ -18,6 +21,7 @@ export default function useLobby() {
         'Room created, USE THIS CALLBACK TO CONTINUE GAME PROCESS!!',
         data
       );
+      setReady();
     });
   };
 

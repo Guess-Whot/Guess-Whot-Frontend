@@ -1,36 +1,17 @@
 import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useSinglePageContext } from '../context/SinglePageContext';
+import useLobby from '../hooks/useLobby';
 
-export default function Landing() {
-  const [img, setImg] = useState([]);
-  const [flipped, setFlipped] = useState(false);
-
-  useEffect(() => {
-    const image = async () => {
-      // const resp = await fetch('http://localhost:7890/api/v1/characters');
-      const resp = await fetch(`${process.env.BACKEND_URL}/api/v1/characters`);
-
-      // console.log(resp);
-      setFlipped(!flipped);
-      const data = await resp.json();
-      // console.log(data);
-      setImg(data);
-    };
-    image();
-  }, []);
+export default function Testing() {
+  const { getRoomNames } = useLobby();
+  const { setAtHome, atHome } = useSinglePageContext();
   return (
-    <>
-      {' '}
-      <h1>TESTETSETEST</h1>
-      <div>
-        {img.map((data) => (
-          <div key={data.id}>
-            {data.name}
-            <img style={{ width: '200px' }} src={`${data.url}`} alt="image" />
-          </div>
-        ))}
-      </div>
-    </>
+    <button
+      onClick={() => {
+        setAtHome(!atHome), getRoomNames();
+      }}
+    >
+      Anything
+    </button>
   );
 }

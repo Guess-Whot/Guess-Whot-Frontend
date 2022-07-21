@@ -1,22 +1,14 @@
 import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
-import useRoomChat from '../hooks/useRoomChat';
+import useLobby from '../hooks/useLobby';
 
 export default function ChatRooms() {
-  const { setMessage, received, setRoom, joinRoom, sendMessage } =
-    useRoomChat();
+  const { setMessage, received, setRoom, joinRoom, sendMessage } = useLobby();
   // playerOne = currentUser;
   const { currentUser } = useAuthContext();
 
   return (
     <div className="App">
-      <input
-        placeholder="Room Number..."
-        onChange={(event) => {
-          setRoom(event.target.value);
-        }}
-      />
-      <button onClick={joinRoom}> Join Room</button>
       <form onSubmit={sendMessage}>
         <input
           placeholder="Message..."

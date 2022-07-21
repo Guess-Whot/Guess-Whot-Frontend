@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import io from 'socket.io-client';
+import useLobby from '../hooks/useLobby';
 import useRoomChat from '../hooks/useRoomChat';
 import {
   CardContainer,
@@ -12,7 +13,7 @@ import {
 // const socket = io.connect(`${process.env.BACKEND_URL}:7890`);
 
 export default function Character({ id, name, url }) {
-  const { flipHandlerBackend } = useRoomChat();
+  const { flipHandlerBackend } = useLobby();
   const [flipped, setFlipped] = useState(false);
 
   //flip handler changes state for local changes, and sends an id to a socket.emit function for non-local action.

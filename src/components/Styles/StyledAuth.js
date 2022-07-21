@@ -9,7 +9,7 @@ export const AuthContainer = styled.div`
   flex-direction: column;
   height: 500px;
   width: 30%;
-  background: black;
+  background: #2b2d42;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
   -webkit-backdrop-filter: blur(8.5px);
@@ -29,14 +29,15 @@ export const HeaderText = styled.h1`
 export const StyledInput = styled.input`
   background: rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border-radius: 2rem;
   width: 80%;
   height: 3rem;
+  border-radius: 50px;
   padding: 10px;
   border: solid 2px;
   outline: none;
   color: #3c354e;
-  margin: 5px;
+  padding-left: 20px;
+  margin-left: 20px;
   font-size: 1rem;
   font-weight: bold;
   &:focus {
@@ -46,13 +47,13 @@ export const StyledInput = styled.input`
     border-radius: 2rem;
   }
   &::placeholder {
-    color: #b9abe099;
+    color: white;
     font-weight: 100;
     font-size: 1rem;
   }
 `;
 export const StyledButton = styled.button`
-  background: linear-gradient(to right, #14163c 0%, #03217b 79%);
+  background: linear-gradient(to left, #000c66 0%, #0000ff 79%);
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   width: 65%;
@@ -70,14 +71,6 @@ export const StyledButtonContain = styled.div`
   justify-content: center;
 `;
 
-export const StyledInputContain = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  height: 20%;
-  width: 100%;
-`;
 export const StyledAlready = styled.button`
   background: linear-gradient(to right, #14163c 0%, #03217b 79%);
   text-transform: uppercase;

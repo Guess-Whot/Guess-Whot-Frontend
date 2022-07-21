@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Character from '../components/CharCard';
+import GameButtons from '../components/GameButtons';
 import ChatRooms from '../components/roomChat';
+import SecretChar from '../components/SecretChar';
 import { StyledBoard } from '../components/Styles/StyledBoard';
 import { StyledChat } from '../components/Styles/StyledChat';
+import { StyledGame } from '../components/Styles/StyledGame';
+import { StyledGameButtons } from '../components/Styles/StyledGameButtons';
+import { StyledSecretChar } from '../components/Styles/StyledSecretChar';
 import { fetchChar } from '../services/chars';
 
 export default function Game() {
@@ -29,21 +34,27 @@ export default function Game() {
   if (loading) return <p>Loading...</p>;
 
   return (
-    <div>
-      <StyledChat>
-        <ChatRooms />
-      </StyledChat>
+    <StyledGame>
       <StyledBoard>
         {/* {error && <p>{error}</p>} */}
         {chars.map((char) => (
             <Character key={char.id}
-              id={char.id}
-              name={char.name}
-              url={char.url}
-              flipped={false}
+            id={char.id}
+            name={char.name}
+            url={char.url}
+            flipped={false}
             />
         ))}
       </StyledBoard>
-    </div>
+            <StyledChat>
+              <ChatRooms />
+            </StyledChat>
+            <StyledGameButtons>
+              <GameButtons />
+            </StyledGameButtons>
+            <StyledSecretChar>
+              <SecretChar />
+            </StyledSecretChar>
+    </StyledGame>
   );
 }

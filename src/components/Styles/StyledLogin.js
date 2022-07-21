@@ -10,12 +10,16 @@ export const StyledLogin = styled.div`
   border: 2px solid #000;
   border-radius: 20px;
   background: #eee;
+  text-align: center;
+
   h2 {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
+    padding-right: 10;
   }
+
   button {
-    background: green;
+    background: blue;
     color: #fff;
     padding: 10px;
     margin: 5px;

@@ -10,7 +10,7 @@ export const StyledBoard = styled.div`
       ". . . . . . . ."
       ". . . . . . . ."; 
 
-  width: 50%;
+  width: 100%;
   height: 100%;
   border: '0px solid' : '4px solid';
   border-bottom-color: rgba(0, 0, 255, 0.1);
@@ -19,4 +19,6 @@ export const StyledBoard = styled.div`
   border-left-color: rgba(0, 0, 255, 0.3);
   background-color: blue;
   object-fit: contain;
+  border-style: solid;
+  border-color: blue;
 `;

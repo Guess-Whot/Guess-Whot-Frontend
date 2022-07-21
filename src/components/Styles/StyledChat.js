@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const StyledChat = styled.aside`
-  width: 25%;
-  height: 75%;
+  width: 100%;
+  height: 100%;
   border-style: solid;
+  background-color: green;
+
 `;

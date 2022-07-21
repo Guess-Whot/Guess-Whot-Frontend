@@ -1,10 +1,18 @@
+import e from 'cors';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import useLobby from '../hooks/useLobby';
 
 export default function Home() {
-  const { setRoomName, createRoom, getRoomNames, roomList } = useLobby();
+  const {
+    setRoomName,
+    createRoom,
+    getRoomNames,
+    roomList,
+    joinRoom,
+    setRoomId,
+  } = useLobby();
 
   const createRoomHandler = () => {
     createRoom();
@@ -13,6 +21,12 @@ export default function Home() {
     getRoomNames();
     console.log(roomList);
   };
+  const joinHandler = async (roomId) => {
+    // console.log(roomId);
+    // setRoomId(roomId);
+    await joinRoom(roomId);
+  };
+
   return (
     <>
       <div>
@@ -34,7 +48,12 @@ export default function Home() {
           <p>Room List</p>
           <div>
             {roomList.map((room) => (
-              <div key={room.id}>
+              <div
+                key={room.id}
+                onClick={() => {
+                  joinHandler(room.id);
+                }}
+              >
                 <p>{room.name}</p>
               </div>
             ))}

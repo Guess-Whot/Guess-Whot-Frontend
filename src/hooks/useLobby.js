@@ -6,10 +6,12 @@ const socket = io.connect(`${process.env.BACKEND_URL}`);
 
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSinglePageContext } from '../context/SinglePageContext';
 
 export default function useLobby() {
   const [roomName, setRoomName] = useState('');
-  const [roomId, setRoomId] = useState('eee');
+  // const [roomId, setRoomId] = useState('eee');
+  const { roomId, setRoomId } = useSinglePageContext();
   const [roomList, setRoomList] = useState([]);
   const setReady = () => {
     socket.emit('ready');
@@ -21,6 +23,7 @@ export default function useLobby() {
         'Room created, USE THIS CALLBACK TO CONTINUE GAME PROCESS!!',
         data
       );
+      setRoomId(data);
       setReady();
     });
   };
@@ -32,9 +35,10 @@ export default function useLobby() {
     });
   };
 
-  const joinRoom = (roomId) => {
-    console.log(roomId);
-    socket.emit('join_room', roomId, () => {
+  const joinRoom = (selected) => {
+    setRoomId(selected);
+    console.log(selected);
+    socket.emit('join_room', selected, () => {
       //send to game, as you will be the second person joining room.
     });
   };

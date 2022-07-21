@@ -1,16 +1,28 @@
 import { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import { useAuthContext } from '../context/AuthContext';
+import { useSinglePageContext } from '../context/SinglePageContext';
 
 const socket = io.connect(`${process.env.BACKEND_URL}`);
 
 export default function useRoomChat() {
   const { currentUser } = useAuthContext();
-
-  const [flippedReceived, setFlippedReceived] = useState(Boolean);
-  const [message, setMessage] = useState('');
-  const [received, setReceived] = useState([]); //for messages...
-  const [room, setRoom] = useState('');
+  const {
+    roomId,
+    setRoomId,
+    flippedReceived,
+    setFlippedReceived,
+    message,
+    setMessage,
+    received,
+    setReceived,
+    room,
+    setRoom,
+  } = useSinglePageContext();
+  // const [] = useState(Boolean);
+  // const [message, setMessage] = useState('');
+  // const [received, setReceived] = useState([]); //for messages...
+  // const [room, setRoom] = useState('');
   // const [chatroom, setChatroom] = useState('default');
   // useEffect(() => {
   //   setRoom(1);
@@ -19,8 +31,9 @@ export default function useRoomChat() {
 
   const sendMessage = (e) => {
     e.preventDefault();
+    console.log('traps', roomId);
     //send currentuser thru this payload
-    socket.emit('send_message', { message, room: chatroom, currentUser });
+    socket.emit('send_message', { message, room: roomId, currentUser });
     const payload = { message, sender: currentUser };
     setReceived((prevState) => [...prevState, payload]);
   };
@@ -44,6 +57,7 @@ export default function useRoomChat() {
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
+      console.log('recieved data', data);
       // setFlipped(data.flipped);
       const receivedPayload = {
         message: data.message,

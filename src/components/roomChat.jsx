@@ -8,7 +8,7 @@ import {
 } from './Styles/StyledHome';
 
 export default function ChatRooms() {
-  const { setMessage, received, sendMessage } = useRoomChat();
+  const { setMessage, received, sendMessage, message } = useRoomChat();
   const { currentUser } = useAuthContext();
   return (
     <>
@@ -20,6 +20,7 @@ export default function ChatRooms() {
             onChange={(event) => {
               setMessage(event.target.value);
             }}
+            value={message}
           />
         </form>
         <h1> Message:</h1>

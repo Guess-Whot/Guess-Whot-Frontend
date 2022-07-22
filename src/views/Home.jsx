@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import ChatRooms from '../components/roomChat';
-import { StyledHomeContainer } from '../components/Styles/StyledHome';
 import { StyledLobbyChat } from '../components/Styles/StyledLobbyChat';
 import { StyledChat } from '../components/Styles/StyledChat';
 import useRoomChat from '../hooks/useRoomChat';

@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSinglePageContext } from '../context/SinglePageContext';
-import Game from './Game';
-import Home from './Home';
-import Testing from './Testing';
+import useRoomChat from '../hooks/useRoomChat';
 
 export default function Lobby() {
-  const { atHome } = useSinglePageContext();
+  const { setRoom } = useSinglePageContext();
+  const { joinRoom } = useRoomChat();
+  useEffect(() => {
+    setRoom(1);
+    joinRoom();
+  }, []);
+
   return (
     <>
-      {!atHome && <Home />}
-      {atHome && <Game />}
+      <Link to="/Home">
+        <h1>Meet the Whots</h1>
+      </Link>
     </>
   );
 }

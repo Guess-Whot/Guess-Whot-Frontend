@@ -23,7 +23,7 @@ export default function App() {
             {currentUser.email ? <Lobby /> : <Redirect to="/auth" />}
           </Route>
           <Route exact path="/home">
-            <Home />
+            {currentUser.email ? <Home /> : <Redirect to="/auth" />}
           </Route>
           {/* <PrivateRoute exact path="/">
             <Home />
@@ -32,11 +32,9 @@ export default function App() {
           <Route exact path="/auth">
             {!currentUser.email ? <Auth /> : <Redirect to="/" />}
           </Route>
-          <Route exact path="/lobby">
-            <Lobby />
-          </Route>
+
           <Route exact path="/game">
-            <Game />
+            {currentUser.email ? <Game /> : <Redirect to="/auth" />}
           </Route>
         </Switch>
       </BrowserRouter>

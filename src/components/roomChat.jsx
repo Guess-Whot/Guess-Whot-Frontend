@@ -11,30 +11,34 @@ export default function ChatRooms() {
   const { setMessage, received, sendMessage } = useRoomChat();
   const { currentUser } = useAuthContext();
   return (
-    <StyledHomeContainer className="App">
-      <form onSubmit={sendMessage}>
-        <button type="submit"> Send Message</button>
-        <input
-          placeholder="Message..."
-          onChange={(event) => {
-            setMessage(event.target.value);
-          }}
-        />
-      </form>
-      <h1> Message:</h1>
-      {received.map((data, index) => (
-        <div key={index}>
-          <div>
-            {data.sender.email === currentUser.email ? (
-              <StyledUser className="playerOne">You: {data.message}</StyledUser>
-            ) : (
-              <StyledOpponent className="playerTwo">
-                {data.sender.email} : {data.message}
-              </StyledOpponent>
-            )}
+    <>
+      <StyledHomeContainer className="App">
+        <form onSubmit={sendMessage}>
+          <button type="submit"> Send Message</button>
+          <input
+            placeholder="Message..."
+            onChange={(event) => {
+              setMessage(event.target.value);
+            }}
+          />
+        </form>
+        <h1> Message:</h1>
+        {received.map((data, index) => (
+          <div key={index}>
+            <div>
+              {data.sender.email === currentUser.email ? (
+                <StyledUser className="playerOne">
+                  You: {data.message}
+                </StyledUser>
+              ) : (
+                <StyledOpponent className="playerTwo">
+                  {data.sender.email} : {data.message}
+                </StyledOpponent>
+              )}
+            </div>
           </div>
-        </div>
-      ))}
-    </StyledHomeContainer>
+        ))}
+      </StyledHomeContainer>
+    </>
   );
 }

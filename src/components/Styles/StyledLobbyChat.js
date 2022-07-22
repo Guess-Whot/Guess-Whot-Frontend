@@ -6,12 +6,6 @@ export const StyledLobbyChat = styled.aside`
   overflow: auto;
   border-style: solid;
   background-color: green;
-  overflow-wrap: break-word;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
   button {
     height: 30px;
     border-radius: 5px;
@@ -19,7 +13,6 @@ export const StyledLobbyChat = styled.aside`
     background: #7ec8e3;
     margin: 0.5rem;
   }
-
   input {
     border: solid 2px black;
     border-radius: 20px;
@@ -28,6 +21,5 @@ export const StyledLobbyChat = styled.aside`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    overflow-wrap: break-word;
   }
 `;

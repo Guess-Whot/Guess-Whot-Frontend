@@ -5,7 +5,7 @@ export const StyledLobbyChat = styled.aside`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  height: 30vh;
   width: 100%;
   background: #2b2d42;
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);

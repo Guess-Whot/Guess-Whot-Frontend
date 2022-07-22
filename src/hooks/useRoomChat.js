@@ -17,6 +17,7 @@ export default function useRoomChat() {
     socket.emit('send_message', { message, room, currentUser });
     const payload = { message, sender: currentUser };
     setReceived((prevState) => [payload, ...prevState]);
+    setMessage('');
   };
 
   const flipHandlerBackend = (id, flipped) => {
@@ -51,5 +52,6 @@ export default function useRoomChat() {
     joinRoom,
     sendMessage,
     flipHandlerBackend,
+    message,
   };
 }

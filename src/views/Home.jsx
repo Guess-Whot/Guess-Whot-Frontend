@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import ChatRooms from '../components/roomChat';
 import { StyledHomeContainer } from '../components/Styles/StyledHome';
 import { StyledLobbyChat } from '../components/Styles/StyledLobbyChat';
+import { StyledChat } from '../components/Styles/StyledChat';
 import useRoomChat from '../hooks/useRoomChat';
 
 export default function Home() {
@@ -31,8 +32,10 @@ export default function Home() {
           }}
         />
         <button onClick={goToGame}> Join Room</button>
-        <ChatRooms />
       </StyledLobbyChat>
+      <StyledChat>
+        <ChatRooms />
+      </StyledChat>
     </>
   );
 }

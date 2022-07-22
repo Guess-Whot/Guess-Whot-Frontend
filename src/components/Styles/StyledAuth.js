@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const AuthContainer = styled.div`
+  background: url('./splatter.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+`;
+
 export const LoginContainer = styled.div`
   transform: translate(120%, 40%);
   top: 50%;

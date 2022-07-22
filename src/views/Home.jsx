@@ -3,13 +3,11 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import ChatRooms from '../components/roomChat';
 import { StyledHomeContainer } from '../components/Styles/StyledHome';
-import { useAuthContext } from '../context/AuthContext';
+import { StyledLobbyChat } from '../components/Styles/StyledLobbyChat';
 import useRoomChat from '../hooks/useRoomChat';
 
 export default function Home() {
   const { setRoom, joinRoom } = useRoomChat();
-  const { currentUser } = useAuthContext();
-  // console.log(currentUser);
   const history = useHistory();
   useEffect(() => {
     setRoom(1);
@@ -23,8 +21,9 @@ export default function Home() {
 
   return (
     <>
-      <StyledHomeContainer>
+      <StyledLobbyChat>
         <h1>GUESS WHOT?</h1>
+<<<<<<< HEAD
 <<<<<<< HEAD
         <StyledLobbyChat>
           <ChatRooms />
@@ -32,6 +31,8 @@ export default function Home() {
         <h3 onClick={() => history.push('/game')}>Proceed to Game</h3>
       </div>
 =======
+=======
+>>>>>>> 750cf34c5a61f834afceba7c2dce17736b6155dd
 
         <input
           placeholder="Room Number..."
@@ -41,8 +42,12 @@ export default function Home() {
         />
         <button onClick={goToGame}> Join Room</button>
         <ChatRooms />
+<<<<<<< HEAD
       </StyledHomeContainer>
 >>>>>>> ddb2a8ba8b75db0e6142ac3e227a0882e18c77f1
+=======
+      </StyledLobbyChat>
+>>>>>>> 750cf34c5a61f834afceba7c2dce17736b6155dd
     </>
   );
 }

@@ -1,48 +1,44 @@
-import React, { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
-import useLobby from '../hooks/useLobby';
 import useRoomChat from '../hooks/useRoomChat';
-import { StyledHomeContainer } from './Styles/StyledHome';
+import {
+  StyledHomeContainer,
+  StyledOpponent,
+  StyledUser,
+} from './Styles/StyledHome';
 
 export default function ChatRooms() {
-  const { setMessage, received, setRoom, joinRoom, sendMessage } =
-    useRoomChat();
-  const history = useHistory();
-  // playerOne = currentUser;
+  const { setMessage, received, sendMessage } = useRoomChat();
   const { currentUser } = useAuthContext();
   return (
-    <StyledHomeContainer className="App">
-      {/* <input
-        placeholder="Room Number..."
-        onChange={(event) => {
-          setRoom(event.target.value);
-        }}
-      /> */}
-      {/* <button onClick={() => joinRoom}> Join Room</button> */}
-      <input
-        placeholder="Message..."
-        onChange={(event) => {
-          setMessage(event.target.value);
-        }}
-      />
-      <button onClick={sendMessage}> Send Message</button>
-      <h1> Message:</h1>
-      {/* <h1>{currentUser}</h1> currentUser doesn't come from roomchat*/}
-
-      {received.map((data, index) => (
-        <div key={index}>
-          <div>
-            {data.sender.email === currentUser.email ? (
-              <div className="playerOne">You: {data.message}</div>
-            ) : (
-              <div className="playerTwo">
-                {data.sender.email} : {data.message}
-              </div>
-            )}
+    <>
+      <StyledHomeContainer className="App">
+        <form onSubmit={sendMessage}>
+          <button type="submit"> Send Message</button>
+          <input
+            placeholder="Message..."
+            onChange={(event) => {
+              setMessage(event.target.value);
+            }}
+          />
+        </form>
+        <h1> Message:</h1>
+        {received.map((data, index) => (
+          <div key={index}>
+            <div>
+              {data.sender.email === currentUser.email ? (
+                <StyledUser className="playerOne">
+                  You: {data.message}
+                </StyledUser>
+              ) : (
+                <StyledOpponent className="playerTwo">
+                  {data.sender.email} : {data.message}
+                </StyledOpponent>
+              )}
+            </div>
           </div>
-        </div>
-      ))}
-    </StyledHomeContainer>
+        ))}
+      </StyledHomeContainer>
+    </>
   );
 }

@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSinglePageContext } from '../context/SinglePageContext';
 import useRoomChat from '../hooks/useRoomChat';
 
 export default function Lobby() {
+  const history = useHistory();
+
   const { setRoom } = useSinglePageContext();
   const { joinRoom } = useRoomChat();
   useEffect(() => {
@@ -13,9 +15,8 @@ export default function Lobby() {
 
   return (
     <>
-      <Link to="/Home">
-        <h1>Meet the Whots</h1>
-      </Link>
+      <h1>Meet the Whots</h1>
+      <h3 onClick={() => history.push('/home')}>Proceed to Lobby</h3>
     </>
   );
 }

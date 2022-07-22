@@ -14,11 +14,6 @@ export default function useRoomChat() {
   const [received, setReceived] = useState([]); //for messages...
   const history = useHistory();
 
-  useEffect(() => {
-    setRoom(1);
-    joinRoom();
-  }, []);
-
   const sendMessage = () => {
     //send currentuser thru this payload
     socket.emit('send_message', { message, room, currentUser });
@@ -33,7 +28,6 @@ export default function useRoomChat() {
   const joinRoom = () => {
     if (room !== '') {
       socket.emit('join_room', room);
-      history.push('/game');
       console.log(currentUser); // works!!
     }
   };

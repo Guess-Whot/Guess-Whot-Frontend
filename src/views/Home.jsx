@@ -16,12 +16,24 @@ export default function Home() {
   //   joinRoom();
   // }, []);
 
+  const goToGame = () => {
+    joinRoom();
+    history.push('/game');
+  };
+
   return (
     <>
       <StyledHomeContainer>
         <h1>GUESS WHOT?</h1>
+
+        <input
+          placeholder="Room Number..."
+          onChange={(event) => {
+            setRoom(event.target.value);
+          }}
+        />
+        <button onClick={goToGame}> Join Room</button>
         <ChatRooms />
-        <h3 onClick={() => history.push('/lobby')}>Proceed to matchmaking</h3>
       </StyledHomeContainer>
     </>
   );

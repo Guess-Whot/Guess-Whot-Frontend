@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledHomeContainer = styled.div`
   border: solid 5px;
+  display: block;
   overflow: auto;
   display: flex;
   align-items: center;

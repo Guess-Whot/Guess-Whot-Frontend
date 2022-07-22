@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledGame = styled.div`
   display: grid;
+
   grid-template-columns: 1.2fr 0.2fr;
   grid-template-rows: 2fr 0.4fr;
   gap: 2em 2em;

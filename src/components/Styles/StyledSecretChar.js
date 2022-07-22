@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const StyledSecretChar = styled.aside`
+  max-height: 100vh;
+
   display: flex;
   flex-direction: column;
   background-color: red;

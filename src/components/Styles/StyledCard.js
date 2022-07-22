@@ -4,7 +4,6 @@ const CardSide = css`
 width: 1fr;
 height: 300px;
 border: 7px groove red;
-
 background-color: yellow;.
 -moz-backface-visibility:hidden;
 -webkit-backface-visibility:hidden;

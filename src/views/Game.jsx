@@ -15,7 +15,6 @@ export default function Game() {
   const [loading, setLoading] = useState(true);
   const [chars, setChars] = useState([]);
   const [error, setError] = useState(true);
-  const { setAtHome, atHome } = useSinglePageContext();
 
   useEffect(() => {
     try {
@@ -39,7 +38,6 @@ export default function Game() {
     <>
       <StyledGame>
         <StyledBoard>
-          {/* {error && <p>{error}</p>} */}
           {chars.map((char) => (
             <Character
               key={char.id}

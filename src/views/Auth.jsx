@@ -17,23 +17,13 @@ export default function Auth() {
   const [signIn, setSignIn] = useState(false);
   const history = useHistory();
 
-  // useEffect(() => {
-  //   setRoom(1);
-  //   joinRoom();
-  // }, []);
-
   const [error, setError] = useState('');
 
   const handleSignUp = async (e) => {
     try {
       e.preventDefault();
       const see = await signUpUser({ email, password });
-      // if (see.email) {
-      // setCurrentUser(see.email);
-
       history.go(0);
-      // }
-      // console.log('we out hereee');
     } catch (error) {
       setError(error.message);
     }
@@ -54,13 +44,9 @@ export default function Auth() {
   const handleClick = () => {
     setSignIn(!signIn);
   };
-  // console.log(signIn);
 
   return (
     <>
-      {/* <div>{error && <p>{error}</p>}</div> 
-      this line throws a objects are not valid react children error */}
-
       {signIn ? (
         <>
           <button onClick={handleClick}>new user? Sign Up</button>

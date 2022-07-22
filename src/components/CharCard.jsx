@@ -1,16 +1,10 @@
 import { useState } from 'react';
-import io from 'socket.io-client';
 import useLobby from '../hooks/useLobby';
-import useRoomChat from '../hooks/useRoomChat';
 import {
   CardContainer,
   StyledCard,
-  StyledCardBack,
   StyledCardInner,
 } from './Styles/StyledCard';
-
-// const socket = io.connect('http://localhost:7890');
-// const socket = io.connect(`${process.env.BACKEND_URL}:7890`);
 
 export default function Character({ id, name, url }) {
   const { flipHandlerBackend } = useLobby();
@@ -21,8 +15,6 @@ export default function Character({ id, name, url }) {
     setFlipped(!flipped); //local changes
     flipHandlerBackend(id, flipped);
   };
-
-  // console.log(id);
 
   return (
     <CardContainer>

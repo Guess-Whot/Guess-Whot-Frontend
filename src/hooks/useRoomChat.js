@@ -11,7 +11,8 @@ export default function useRoomChat() {
   const [message, setMessage] = useState('');
   const [received, setReceived] = useState([]); //for messages...
 
-  const sendMessage = () => {
+  const sendMessage = (e) => {
+    e.preventDefault();
     //send currentuser thru this payload
     socket.emit('send_message', { message, room, currentUser });
     const payload = { message, sender: currentUser };
@@ -36,7 +37,6 @@ export default function useRoomChat() {
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
-      console.log('recieved data', data);
       const receivedPayload = {
         message: data.message,
         sender: data.currentUser,

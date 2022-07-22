@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Character from '../components/CharCard';
 import GameButtons from '../components/GameButtons';
 import ChatRooms from '../components/roomChat';
@@ -15,6 +16,7 @@ export default function Game() {
   const [loading, setLoading] = useState(true);
   const [chars, setChars] = useState([]);
   const [error, setError] = useState(true);
+  const history = useHistory();
 
   useEffect(() => {
     try {
@@ -36,6 +38,7 @@ export default function Game() {
 
   return (
     <>
+      <button onClick={() => history.push('/home')}>Leave Game</button>
       <StyledGame>
         <StyledBoard>
           {chars.map((char) => (

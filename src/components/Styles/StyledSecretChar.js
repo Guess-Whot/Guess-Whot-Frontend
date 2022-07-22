@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
 export const StyledSecretChar = styled.aside`
-display: flex;
-flex-direction: column;
-background-color: red;
-border-style: solid;
-border-color: black;
+  max-height: 100vh;
 
-img {
+  display: flex;
+  flex-direction: column;
+  background-color: red;
+  border-style: solid;
+  border-color: black;
+
+  img {
     margin-top: 50px;
-    width: 100%;
-    height: 50%;
+    width: 200px;
+    height: 200px;
     z-index: 0;
   }
-`
+`;

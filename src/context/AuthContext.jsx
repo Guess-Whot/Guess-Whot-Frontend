@@ -11,20 +11,16 @@ const AuthProvider = ({ children }) => {
   const [error, setError] = useState('');
   const [username, setusername] = useState('');
   const [currentUser, setCurrentUser] = useState({ email: null });
-  // playerOne = currentUser.email;
 
   useEffect(() => {
     const userFetch = async () => {
       const user = await getUser();
       console.log('AuthContextUserTest', user);
-
       setCurrentUser({ email: user?.email });
-
       setLoading(false);
     };
     userFetch();
   }, []);
-  // console.log('authContext', loading);
 
   return (
     <AuthContext.Provider

@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const AuthContainer = styled.div`
+  background: url('./splatter.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+`;
+
 export const LoginContainer = styled.div`
   transform: translate(120%, 40%);
   top: 50%;
@@ -18,6 +26,7 @@ export const LoginContainer = styled.div`
   text-transform: uppercase;
   letter-spacing: 0.4rem;
 `;
+
 export const HeaderText = styled.h1`
   margin: 1rem 0 1rem 0;
   width: 100%;
@@ -52,8 +61,9 @@ export const StyledInput = styled.input`
     font-size: 1rem;
   }
 `;
+
 export const StyledButton = styled.button`
-  background: linear-gradient(to left, #000c66 0%, #0000ff 79%);
+  background: #7ec8e3;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   width: 65%;
@@ -63,6 +73,7 @@ export const StyledButton = styled.button`
   border-radius: 2rem;
   cursor: pointer;
 `;
+
 export const StyledButtonContain = styled.div`
   margin: 1rem 0 2rem 0;
   width: 100%;

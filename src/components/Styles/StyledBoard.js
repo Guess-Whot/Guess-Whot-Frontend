@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const StyledBoard = styled.div`
     display: grid; 
+    max-height: 100vh;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
     grid-template-rows: 1fr 1fr 1fr; 
     gap: 1em 1em; 

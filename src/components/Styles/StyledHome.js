@@ -1,20 +1,23 @@
 import styled from 'styled-components';
 
 export const StyledHomeContainer = styled.div`
-  border: solid 5px;
+  display: block;
+  overflow: auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
+  text-align: center;
+  overflow-wrap: break-word;
   input {
     border: solid 2px black;
     border-radius: 20px;
     height: 25px;
-    width: 205px;
+    width: 70%;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    overflow-wrap: break-word;
   }
 
   h1 {
@@ -38,4 +41,23 @@ export const StyledHomeContainer = styled.div`
     border: solid 2px;
     text-align: center;
   }
+`;
+
+export const StyledUser = styled.div`
+  background-color: rgba(4, 7, 198, 0.712);
+  font-size: large;
+  border-radius: 10px;
+  border: 5px solid;
+  overflow-wrap: break-word;
+  color: white;
+`;
+export const StyledOpponent = styled.div`
+  background-color: rgba(19, 136, 213, 0.712);
+  font-size: large;
+  border-radius: 10px;
+  border: 5px solid;
+  overflow-wrap: break-word;
+  color: white;
+  width: 100%;
+  height: 100%;
 `;

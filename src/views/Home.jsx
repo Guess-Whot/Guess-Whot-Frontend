@@ -3,13 +3,12 @@ import { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import ChatRooms from '../components/roomChat';
 import { StyledHomeContainer } from '../components/Styles/StyledHome';
-import { useAuthContext } from '../context/AuthContext';
+import { StyledLobbyChat } from '../components/Styles/StyledLobbyChat';
+import { StyledChat } from '../components/Styles/StyledChat';
 import useRoomChat from '../hooks/useRoomChat';
 
 export default function Home() {
   const { setRoom, joinRoom } = useRoomChat();
-  const { currentUser } = useAuthContext();
-  // console.log(currentUser);
   const history = useHistory();
   useEffect(() => {
     setRoom(1);
@@ -23,7 +22,7 @@ export default function Home() {
 
   return (
     <>
-      <StyledHomeContainer>
+      <StyledLobbyChat>
         <h1>GUESS WHOT?</h1>
 
         <input
@@ -33,8 +32,10 @@ export default function Home() {
           }}
         />
         <button onClick={goToGame}> Join Room</button>
+      </StyledLobbyChat>
+      <StyledChat>
         <ChatRooms />
-      </StyledHomeContainer>
+      </StyledChat>
     </>
   );
 }

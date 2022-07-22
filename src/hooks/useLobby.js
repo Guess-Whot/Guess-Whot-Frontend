@@ -12,13 +12,13 @@ export default function useLobby() {
   const [room, setRoom] = useState('');
   const [roomName, setRoomName] = useState('');
   const [roomList, setRoomList] = useState([]);
-  const sendMessage = (e) => {
-    e.preventDefault();
-    //send currentuser thru this payload
-    socket.emit('send_message', { message, room, currentUser });
-    const payload = { message, sender: currentUser };
-    setReceived((prevState) => [...prevState, payload]);
-  };
+  // const sendMessage = (e) => {
+  //   e.preventDefault();
+  //   //send currentuser thru this payload
+  //   socket.emit('send_message', { message, room, currentUser });
+  //   const payload = { message, sender: currentUser };
+  //   setReceived((prevState) => [...prevState, payload]);
+  // };
 
   const flipHandlerBackend = (id, flipped) => {
     socket.emit('flipped_card', { id, flipped, room });
@@ -48,11 +48,11 @@ export default function useLobby() {
   return {
     setRoomName,
     roomList,
-    setMessage,
+    // setMessage,
     received,
     setRoom,
     joinRoom,
-    sendMessage,
+    // sendMessage,
     flipHandlerBackend,
   };
 }

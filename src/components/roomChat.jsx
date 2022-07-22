@@ -12,13 +12,15 @@ export default function ChatRooms() {
   const { currentUser } = useAuthContext();
   return (
     <StyledHomeContainer className="App">
-      <input
-        placeholder="Message..."
-        onChange={(event) => {
-          setMessage(event.target.value);
-        }}
-      />
-      <button onClick={sendMessage}> Send Message</button>
+      <form onSubmit={sendMessage}>
+        <button type="submit"> Send Message</button>
+        <input
+          placeholder="Message..."
+          onChange={(event) => {
+            setMessage(event.target.value);
+          }}
+        />
+      </form>
       <h1> Message:</h1>
       {received.map((data, index) => (
         <div key={index}>

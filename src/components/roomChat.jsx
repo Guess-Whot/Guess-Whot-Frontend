@@ -1,7 +1,11 @@
 import React from 'react';
 import { useAuthContext } from '../context/AuthContext';
 import useRoomChat from '../hooks/useRoomChat';
-import { StyledHomeContainer } from './Styles/StyledHome';
+import {
+  StyledHomeContainer,
+  StyledOpponent,
+  StyledUser,
+} from './Styles/StyledHome';
 
 export default function ChatRooms() {
   const { setMessage, received, sendMessage } = useRoomChat();
@@ -20,11 +24,11 @@ export default function ChatRooms() {
         <div key={index}>
           <div>
             {data.sender.email === currentUser.email ? (
-              <div className="playerOne">You: {data.message}</div>
+              <StyledUser className="playerOne">You: {data.message}</StyledUser>
             ) : (
-              <div className="playerTwo">
+              <StyledOpponent className="playerTwo">
                 {data.sender.email} : {data.message}
-              </div>
+              </StyledOpponent>
             )}
           </div>
         </div>

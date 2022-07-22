@@ -31,7 +31,7 @@ export default function Auth() {
       // if (see.email) {
       // setCurrentUser(see.email);
 
-      history.push('/');
+      history.go(0);
       // }
       // console.log('we out hereee');
     } catch (error) {
@@ -43,7 +43,7 @@ export default function Auth() {
     try {
       e.preventDefault();
       await signInUser({ email, password });
-      history.push('/');
+      history.go(0);
     } catch (error) {
       setEmail('');
       setPassword('');

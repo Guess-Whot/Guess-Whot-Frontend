@@ -6,8 +6,7 @@ import useRoomChat from '../hooks/useRoomChat';
 export default function Lobby() {
   const history = useHistory();
 
-  const { setRoom } = useSinglePageContext();
-  const { joinRoom } = useRoomChat();
+  const { setRoom, joinRoom } = useRoomChat();
   useEffect(() => {
     setRoom(1);
     joinRoom();

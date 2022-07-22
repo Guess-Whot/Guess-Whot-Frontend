@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
+import { useSinglePageContext } from '../context/SinglePageContext';
+import useRoomChat from '../hooks/useRoomChat';
 import { signInUser, signUpUser } from '../services/users';
 
 export default function Auth() {
@@ -15,6 +17,11 @@ export default function Auth() {
   const [signIn, setSignIn] = useState(false);
   const history = useHistory();
 
+  // useEffect(() => {
+  //   setRoom(1);
+  //   joinRoom();
+  // }, []);
+
   const [error, setError] = useState('');
 
   const handleSignUp = async (e) => {
@@ -23,7 +30,8 @@ export default function Auth() {
       const see = await signUpUser({ email, password });
       // if (see.email) {
       // setCurrentUser(see.email);
-      history.go(0);
+
+      history.push('/home');
       // }
       // console.log('we out hereee');
     } catch (error) {
@@ -35,7 +43,7 @@ export default function Auth() {
     try {
       e.preventDefault();
       await signInUser({ email, password });
-      history.go(0);
+      history.push('/home');
     } catch (error) {
       setEmail('');
       setPassword('');

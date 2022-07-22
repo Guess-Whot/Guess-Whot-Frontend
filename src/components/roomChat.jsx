@@ -1,23 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
+import useLobby from '../hooks/useLobby';
 import useRoomChat from '../hooks/useRoomChat';
 import { StyledHomeContainer } from './Styles/StyledHome';
 
 export default function ChatRooms() {
   const { setMessage, received, setRoom, joinRoom, sendMessage } =
     useRoomChat();
+  const history = useHistory();
   // playerOne = currentUser;
   const { currentUser } = useAuthContext();
-
   return (
     <StyledHomeContainer className="App">
-      <input
+      {/* <input
         placeholder="Room Number..."
         onChange={(event) => {
           setRoom(event.target.value);
         }}
-      />
-      <button onClick={joinRoom}> Join Room</button>
+      /> */}
+      {/* <button onClick={() => joinRoom}> Join Room</button> */}
       <input
         placeholder="Message..."
         onChange={(event) => {

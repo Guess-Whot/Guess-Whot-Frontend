@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import io from 'socket.io-client';
 import { useAuthContext } from '../context/AuthContext';
+import { useSinglePageContext } from '../context/SinglePageContext';
 
 const socket = io.connect(`${process.env.BACKEND_URL}`);
 
 export default function useRoomChat() {
   const { currentUser } = useAuthContext();
-
+  const { setRoom, room } = useSinglePageContext();
   const [flippedReceived, setFlippedReceived] = useState(Boolean);
   const [message, setMessage] = useState('');
   const [received, setReceived] = useState([]); //for messages...
-  const [room, setRoom] = useState(1);
-
-  useEffect(() => {
-    setRoom(1);
-    joinRoom();
-  }, []);
+  const history = useHistory();
 
   const sendMessage = () => {
     //send currentuser thru this payload
@@ -43,6 +40,7 @@ export default function useRoomChat() {
 
   useEffect(() => {
     socket.on('receive_message', (data) => {
+      console.log('recieved data', data);
       // setFlipped(data.flipped);
       const receivedPayload = {
         message: data.message,

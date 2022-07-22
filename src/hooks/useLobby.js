@@ -12,7 +12,6 @@ export default function useLobby() {
   const [received, setReceived] = useState([]); //for messages...
   const [room, setRoom] = useState('');
   const [roomName, setRoomName] = useState('');
-
   const [roomList, setRoomList] = useState([]);
   const sendMessage = (e) => {
     e.preventDefault();

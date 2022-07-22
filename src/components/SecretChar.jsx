@@ -24,13 +24,16 @@ export default function SecretChar() {
     <div>
       <>
         {!hide && (
-          <select onChange={(e) => setSecretImg(e.target.value)}>
-            {chars.map((char) => (
-              <option key={char.id} value={char.url}>
-                {char.name}
-              </option>
-            ))}
-          </select>
+          <div>
+           <h1>Select your Secret Character</h1>
+            <select onChange={(e) => setSecretImg(e.target.value)}>
+              {chars.map((char) => (
+                <option key={char.id} value={char.url}>
+                  {char.name}
+                </option>
+              ))}
+            </select>
+          </div>
         )}
         {!hide && <button onClick={() => setHide(!hide)}>set</button>}
       </>

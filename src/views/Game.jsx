@@ -10,6 +10,7 @@ import { StyledGame } from '../components/Styles/StyledGame';
 import { StyledGameButtons } from '../components/Styles/StyledGameButtons';
 import { StyledSecretChar } from '../components/Styles/StyledSecretChar';
 import { useSinglePageContext } from '../context/SinglePageContext';
+import useRoomChat from '../hooks/useRoomChat';
 import { fetchChar } from '../services/chars';
 
 export default function Game() {
@@ -17,6 +18,7 @@ export default function Game() {
   const [chars, setChars] = useState([]);
   const [error, setError] = useState(true);
   const history = useHistory();
+  const { setRoom, joinRoom } = useRoomChat();
 
   useEffect(() => {
     try {
@@ -34,11 +36,17 @@ export default function Game() {
     }
   }, []);
 
+  const handleLeaveGame = () => {
+    setRoom(1);
+    joinRoom();
+    history.push('/home');
+  };
+
   if (loading) return <p>Loading...</p>;
 
   return (
     <>
-      <button onClick={() => history.push('/home')}>Leave Game</button>
+      <button onClick={handleLeaveGame}>Leave Game</button>
       <StyledGame>
         <StyledBoard>
           {chars.map((char) => (

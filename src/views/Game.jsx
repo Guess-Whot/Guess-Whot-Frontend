@@ -34,17 +34,17 @@ export default function Game() {
     }
   }, []);
 
-  const handleLeaveGame = () => {
-    setRoom(1);
-    joinRoom();
-    history.push('/home');
-  };
+  // const handleLeaveGame = () => {
+  //   setRoom(1);
+  //   joinRoom();
+  //   history.push('/home');
+  // };
 
   if (loading) return <p>Loading...</p>;
 
   return (
     <>
-      <button onClick={handleLeaveGame}>Leave Game</button>
+      <button onClick={() => history.push('/home')}>Leave Game</button>
       <StyledGame>
         <StyledBoard>
           {chars.map((char) => (

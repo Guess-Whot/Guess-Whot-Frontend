@@ -5,5 +5,4 @@ export const StyledChat = styled.aside`
   height: 100%;
   border-style: solid;
   background-color: green;
-
 `;

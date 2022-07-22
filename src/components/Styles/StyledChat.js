@@ -7,4 +7,8 @@ export const StyledChat = styled.aside`
   background-color: green;
   display: block;
   max-height: 100%;
+
+  input {
+    margin: 10px;
+  }
 `;

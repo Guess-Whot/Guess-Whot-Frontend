@@ -11,22 +11,23 @@ export const StyledLobbyChat = styled.aside`
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(8.5px);
   -webkit-backdrop-filter: blur(8.5px);
-  border-radius: 100px;
   color: #ffffff;
   text-transform: uppercase;
   letter-spacing: 0.4rem;
+
   button {
     margin: 10px;
-    background: linear-gradient(to left, #000c66 0%, #0000ff 79%);
+    background: #2b2d42;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     width: 65%;
     height: 3rem;
-    border: none;
+    border: solid;
     color: white;
     border-radius: 2rem;
     cursor: pointer;
   }
+
   input {
     background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -47,6 +48,7 @@ export const StyledLobbyChat = styled.aside`
       backdrop-filter: blur(12rem);
       border-radius: 2rem;
     }
+
     &::placeholder {
       color: white;
       font-weight: 100;
@@ -58,7 +60,7 @@ export const StyledLobbyChat = styled.aside`
 export const StyledBtn = styled.button`
   button {
     margin: 10px;
-    background: linear-gradient(to left, #000c66 0%, #0000ff 79%);
+    background: #2b2d42;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
     width: 65%;

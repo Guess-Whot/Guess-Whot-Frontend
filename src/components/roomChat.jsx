@@ -14,7 +14,6 @@ export default function ChatRooms() {
     <>
       <StyledHomeContainer className="App">
         <form onSubmit={sendMessage}>
-          <button type="submit"> Send Message</button>
           <input
             placeholder="Message..."
             onChange={(event) => {
@@ -22,8 +21,9 @@ export default function ChatRooms() {
             }}
             value={message}
           />
+            <button type="submit"> Send Message</button>
         </form>
-        <h1> Message:</h1>
+        <h1> Messages:</h1>
         {received.map((data, index) => (
           <div key={index}>
             <div>

@@ -1,4 +1,3 @@
-// const url = 'http://localhost:7890/api/v1/users';
 const url = `${process.env.BACKEND_URL}/api/v1/users`;
 
 export async function signUpUser({ email, password }) {
@@ -36,8 +35,6 @@ export async function getUser() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      // 'Access-Control-Allow-Credentials': true,
-      // 'Access-Control-Allow-Origin': process.env.BACKEND_URL,
     },
     credentials: 'include',
     mode: 'cors',
@@ -51,20 +48,12 @@ export async function getUser() {
 }
 
 export async function signOutUser() {
-  // const resp = await client.auth.signOut();
-  // return checkError(resp);
-
   const user = await fetch(url + '/sessions', {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     mode: 'cors',
-    // body: JSON.stringify(),
   });
 
   return user;
-
-  // if (!user.ok) {
-  //   throw new Error('Invalid email or password');
-  // }
 }

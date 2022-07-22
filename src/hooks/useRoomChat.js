@@ -21,7 +21,6 @@ export default function useRoomChat() {
   };
 
   const flipHandlerBackend = (id, flipped) => {
-    // console.log(id, 'Pennies');
     socket.emit('flipped_card', { id, flipped, room });
   };
   const joinRoom = () => {

@@ -7,18 +7,10 @@ const socket = io.connect(`${process.env.BACKEND_URL}`);
 export default function useLobby() {
   const { currentUser } = useAuthContext();
 
-  const [message, setMessage] = useState('');
   const [received, setReceived] = useState([]); //for messages...
   const [room, setRoom] = useState('');
   const [roomName, setRoomName] = useState('');
   const [roomList, setRoomList] = useState([]);
-  // const sendMessage = (e) => {
-  //   e.preventDefault();
-  //   //send currentuser thru this payload
-  //   socket.emit('send_message', { message, room, currentUser });
-  //   const payload = { message, sender: currentUser };
-  //   setReceived((prevState) => [...prevState, payload]);
-  // };
 
   const flipHandlerBackend = (id, flipped) => {
     socket.emit('flipped_card', { id, flipped, room });

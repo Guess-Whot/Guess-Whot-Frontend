@@ -4,24 +4,15 @@ import {
   AuthContainer,
   HeaderText,
   LoginContainer,
-  StyledAlready,
   StyledButton,
   StyledButtonContain,
   StyledInput,
-  StyledInputContain,
 } from '../components/Styles/StyledAuth';
 import { useAuthContext } from '../context/AuthContext';
 import { signInUser, signUpUser } from '../services/users';
 
 export default function Auth() {
-  const {
-    currentUser,
-    setCurrentUser,
-    email,
-    setEmail,
-    password,
-    setPassword,
-  } = useAuthContext();
+  const { email, setEmail, password, setPassword } = useAuthContext();
   const [signIn, setSignIn] = useState(false);
   const history = useHistory();
 
